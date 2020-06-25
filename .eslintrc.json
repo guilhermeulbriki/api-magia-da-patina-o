@@ -24,6 +24,8 @@
       "prettier"
     ],
     "rules": {
+      "camelcase": "off",
+      "no-param-reassign": "off",
       "prettier/prettier": "error",
       "class-methods-use-this": "off",
       "@typescript-eslint/camelcase": "off",
