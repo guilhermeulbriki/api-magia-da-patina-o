@@ -1,9 +1,11 @@
-import Sponsors from '../infra/typeorm/entities/Sponsors';
+import Sponsor from '../infra/typeorm/entities/Sponsors';
 import ICreateSponsorDTO from '../dtos/ICreateSponsorDTO';
 
 export default interface ISponsorRepository {
-  create(data: ICreateSponsorDTO): Promise<Sponsors>;
-  findByEmail(email: string): Promise<Sponsors | undefined>;
-  findByCpf(cpf: string): Promise<Sponsors | undefined>;
-  findByRg(rg: string): Promise<Sponsors | undefined>;
+  listAll(): Promise<Sponsor[]>;
+  create(data: ICreateSponsorDTO): Promise<Sponsor>;
+  findByEmail(email: string): Promise<Sponsor | undefined>;
+  findByCpf(cpf: string): Promise<Sponsor | undefined>;
+  findByRg(rg: string): Promise<Sponsor | undefined>;
+  findById(id: string): Promise<Sponsor | undefined>;
 }

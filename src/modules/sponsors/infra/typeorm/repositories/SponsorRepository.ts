@@ -12,8 +12,12 @@ class SponsorRepository implements ISponsorRepository {
     this.ormRepository = getRepository(Sponsor);
   }
 
+  public async listAll(): Promise<Sponsor[]> {
+    return this.ormRepository.find();
+  }
+
   public async create(sponsorData: ICreateSponsorDTO): Promise<Sponsor> {
-    const appointment = this.ormRepository.create(sponsorData);
+    const appointment = await this.ormRepository.create(sponsorData);
 
     await this.ormRepository.save(appointment);
 
@@ -39,6 +43,12 @@ class SponsorRepository implements ISponsorRepository {
   public async findByRg(rg: string): Promise<Sponsor | undefined> {
     return this.ormRepository.findOne({
       where: { rg },
+    });
+  }
+
+  public async findById(id: string): Promise<Sponsor | undefined> {
+    return this.ormRepository.findOne({
+      where: { id },
     });
   }
 }

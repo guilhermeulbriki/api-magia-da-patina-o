@@ -28,7 +28,7 @@ describe('CreateSponsor', () => {
       rg: '123',
       phone: '123',
       whatsapp: '123',
-      born: '',
+      born: new Date(2020),
       type: 'mãe',
       gender: 'masculino',
       address: {
@@ -53,7 +53,7 @@ describe('CreateSponsor', () => {
       rg: '123',
       phone: '123',
       whatsapp: '123',
-      born: '',
+      born: new Date(2020),
       type: 'mãe',
       gender: 'masculino',
       address: {
@@ -75,7 +75,7 @@ describe('CreateSponsor', () => {
         rg: '1234',
         phone: '123',
         whatsapp: '123',
-        born: '',
+        born: new Date(2020),
         type: 'mãe',
         gender: 'masculino',
         address: {
@@ -99,7 +99,7 @@ describe('CreateSponsor', () => {
       rg: '123',
       phone: '123',
       whatsapp: '123',
-      born: '',
+      born: new Date(2020),
       type: 'mãe',
       gender: 'masculino',
       address: {
@@ -121,7 +121,7 @@ describe('CreateSponsor', () => {
         rg: '1234',
         phone: '123',
         whatsapp: '123',
-        born: '',
+        born: new Date(2020),
         type: 'mãe',
         gender: 'masculino',
         address: {
@@ -145,7 +145,7 @@ describe('CreateSponsor', () => {
       rg: 'SAME-RG',
       phone: '123',
       whatsapp: '123',
-      born: '',
+      born: new Date(2020),
       type: 'mãe',
       gender: 'masculino',
       address: {
@@ -167,8 +167,33 @@ describe('CreateSponsor', () => {
         rg: 'SAME-RG',
         phone: '123',
         whatsapp: '123',
-        born: '',
+        born: new Date(2020),
         type: 'mãe',
+        gender: 'masculino',
+        address: {
+          street: 'rua',
+          neighborhood: 'bairro',
+          complement: '',
+          number: 123,
+          cep: 123,
+          city: 'cidade',
+        },
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should not be able to create a new sponsor under 18', async () => {
+    await expect(
+      createSponsor.execute({
+        name: 'nome',
+        email: 'email@gmail.com',
+        password: '123',
+        cpf: '123',
+        rg: '123',
+        phone: '123',
+        whatsapp: '123',
+        born: new Date(2003, 2, 4),
+        type: 'student',
         gender: 'masculino',
         address: {
           street: 'rua',

@@ -6,6 +6,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+import { Exclude } from 'class-transformer';
+
 @Entity('sponsors')
 class Sponsor {
   @PrimaryGeneratedColumn('uuid')
@@ -15,6 +17,7 @@ class Sponsor {
   name: string;
 
   @Column()
+  @Exclude()
   password: string;
 
   @Column()
@@ -36,7 +39,7 @@ class Sponsor {
   gender: string;
 
   @Column()
-  born: string;
+  born: Date;
 
   @Column()
   type: string;

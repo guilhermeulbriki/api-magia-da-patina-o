@@ -8,6 +8,16 @@ import Sponsors from '../../infra/typeorm/entities/Sponsors';
 class FakeSponsorsRepository implements ISponsorRepository {
   private sponsors: Sponsors[] = [];
 
+  public async findById(id: string): Promise<Sponsors | undefined> {
+    const findSponsorById = this.sponsors.find(sponsor => sponsor.id === id);
+
+    return findSponsorById;
+  }
+
+  public async listAll(): Promise<Sponsors[]> {
+    return this.sponsors;
+  }
+
   public async findByRg(rg: string): Promise<Sponsors | undefined> {
     const findSponsorByRg = this.sponsors.find(sponsor => sponsor.rg === rg);
 

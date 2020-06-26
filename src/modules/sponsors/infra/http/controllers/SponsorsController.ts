@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import CreateSponsorService from '@modules/sponsors/services/CreateSponsorService';
+import ListSponsorsService from '@modules/sponsors/services/ListSponsorsService';
 
 export default class SponsorController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -36,5 +37,16 @@ export default class SponsorController {
     });
 
     return response.json(sponsor);
+  }
+
+  public async listAll(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const listSponsors = container.resolve(ListSponsorsService);
+
+    const sponsors = await listSponsors.execute();
+
+    return response.json(sponsors);
   }
 }

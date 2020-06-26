@@ -7,12 +7,13 @@ import ISponsorRepository from '@modules/sponsors/repositories/ISponsorRepositor
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 import Sponsors from '../infra/typeorm/entities/Sponsors';
+import getAgeByDate from '../utils/getAgeByDate';
 
 interface IRequestDTO {
   name: string;
   password: string;
   email: string;
-  born: string;
+  born: Date;
   rg: string;
   cpf: string;
   phone: string;
@@ -47,6 +48,7 @@ class CreateSponsorService {
     if (checkSponsorExists) {
       throw new AppError('Este email já está sendo usado');
     }
+
     const checkCpfIsAvailable = await this.sponsorRepository.findByCpf(
       data.cpf,
     );
@@ -54,10 +56,17 @@ class CreateSponsorService {
     if (checkCpfIsAvailable) {
       throw new AppError('Este cpf já está sendo usado');
     }
+
     const checkRgIsAvailable = await this.sponsorRepository.findByRg(data.rg);
 
     if (checkRgIsAvailable) {
       throw new AppError('Este rg já está sendo usado');
+    }
+
+    const checkAge = getAgeByDate(data.born);
+
+    if (checkAge < 18) {
+      throw new AppError('Você precisar ser maior de idade');
     }
 
     const hashedPassword = await this.hashProvider.generateHash(data.password);

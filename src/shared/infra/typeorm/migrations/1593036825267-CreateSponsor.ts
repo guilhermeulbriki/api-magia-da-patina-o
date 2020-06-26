@@ -50,7 +50,7 @@ export default class CreateSponsor1593036825267 implements MigrationInterface {
           },
           {
             name: 'born',
-            type: 'varchar',
+            type: 'timestamp',
           },
           {
             name: 'type',
