@@ -18,26 +18,6 @@ class FakeSponsorsRepository implements ISponsorRepository {
     return this.sponsors;
   }
 
-  public async findByRg(rg: string): Promise<Sponsors | undefined> {
-    const findSponsorByRg = this.sponsors.find(sponsor => sponsor.rg === rg);
-
-    return findSponsorByRg;
-  }
-
-  public async findByCpf(cpf: string): Promise<Sponsors | undefined> {
-    const findSponsorByCpf = this.sponsors.find(sponsor => sponsor.cpf === cpf);
-
-    return findSponsorByCpf;
-  }
-
-  public async findByEmail(email: string): Promise<Sponsors | undefined> {
-    const findSponsorByEmail = this.sponsors.find(
-      sponsor => sponsor.email === email,
-    );
-
-    return findSponsorByEmail;
-  }
-
   public async create(sponsorData: ICreateSponsorDTO): Promise<Sponsors> {
     const sponsor = new Sponsors();
 
@@ -56,6 +36,32 @@ class FakeSponsorsRepository implements ISponsorRepository {
     this.sponsors[findIndex] = sponsor;
 
     return sponsor;
+  }
+
+  public async delete(id: string): Promise<void> {
+    const findIndex = this.sponsors.findIndex(sponsor => sponsor.id === id);
+
+    this.sponsors.splice(findIndex, 1);
+  }
+
+  public async findByRg(rg: string): Promise<Sponsors | undefined> {
+    const findSponsorByRg = this.sponsors.find(sponsor => sponsor.rg === rg);
+
+    return findSponsorByRg;
+  }
+
+  public async findByCpf(cpf: string): Promise<Sponsors | undefined> {
+    const findSponsorByCpf = this.sponsors.find(sponsor => sponsor.cpf === cpf);
+
+    return findSponsorByCpf;
+  }
+
+  public async findByEmail(email: string): Promise<Sponsors | undefined> {
+    const findSponsorByEmail = this.sponsors.find(
+      sponsor => sponsor.email === email,
+    );
+
+    return findSponsorByEmail;
   }
 }
 

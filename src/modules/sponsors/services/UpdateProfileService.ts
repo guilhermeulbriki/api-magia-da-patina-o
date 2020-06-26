@@ -4,12 +4,12 @@ import AppError from '@shared/errors/AppError';
 import { injectable, inject } from 'tsyringe';
 
 import ISponsorRepository from '@modules/sponsors/repositories/ISponsorRepository';
-import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 import Sponsors from '../infra/typeorm/entities/Sponsors';
 import getAgeByDate from '../utils/getAgeByDate';
 
 interface IRequestDTO {
+  id: string;
   name: string;
   password: string;
   email: string;
@@ -31,21 +31,24 @@ interface IRequestDTO {
 }
 
 @injectable()
-class CreateSponsorService {
+class UpdateSponsorService {
   constructor(
     @inject('SponsorRepository')
     private sponsorRepository: ISponsorRepository,
-
-    @inject('HashProvider')
-    private hashProvider: IHashProvider,
   ) {}
 
   public async execute(data: IRequestDTO): Promise<Sponsors> {
+    const sponsor = await this.sponsorRepository.findById(data.id);
+
+    if (!sponsor) {
+      throw new AppError('Responsável não encontrado');
+    }
+
     const checkSponsorExists = await this.sponsorRepository.findByEmail(
       data.email,
     );
 
-    if (checkSponsorExists) {
+    if (checkSponsorExists && data.email !== sponsor.email) {
       throw new AppError('Este email já está sendo usado');
     }
 
@@ -53,13 +56,13 @@ class CreateSponsorService {
       data.cpf,
     );
 
-    if (checkCpfIsAvailable) {
+    if (checkCpfIsAvailable && data.cpf !== sponsor.cpf) {
       throw new AppError('Este cpf já está sendo usado');
     }
 
     const checkRgIsAvailable = await this.sponsorRepository.findByRg(data.rg);
 
-    if (checkRgIsAvailable) {
+    if (checkRgIsAvailable && data.rg !== sponsor.rg) {
       throw new AppError('Este rg já está sendo usado');
     }
 
@@ -69,24 +72,19 @@ class CreateSponsorService {
       throw new AppError('Você precisar ser maior de idade');
     }
 
-    const hashedPassword = await this.hashProvider.generateHash(data.password);
+    sponsor.name = data.name;
+    sponsor.email = data.email;
+    sponsor.born = data.born;
+    sponsor.rg = data.rg;
+    sponsor.cpf = data.cpf;
+    sponsor.phone = data.phone;
+    sponsor.whatsapp = data.whatsapp;
+    sponsor.gender = data.gender;
+    sponsor.type = data.type;
+    sponsor.address = JSON.stringify(data.address);
 
-    const formateData = {
-      name: data.name,
-      password: hashedPassword,
-      email: data.email,
-      born: data.born,
-      rg: data.rg,
-      cpf: data.cpf,
-      phone: data.phone,
-      whatsapp: data.whatsapp,
-      gender: data.gender,
-      type: data.type,
-      address: JSON.stringify(data.address),
-    };
-
-    return this.sponsorRepository.create(formateData);
+    return this.sponsorRepository.save(sponsor);
   }
 }
 
-export default CreateSponsorService;
+export default UpdateSponsorService;

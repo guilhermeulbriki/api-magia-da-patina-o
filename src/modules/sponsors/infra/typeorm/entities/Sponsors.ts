@@ -6,7 +6,16 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Exclude } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
+
+interface IAddressAsJson {
+  street: string;
+  neighborhood: string;
+  complement: string;
+  number: number;
+  cep: number;
+  city: string;
+}
 
 @Entity('sponsors')
 class Sponsor {
@@ -45,7 +54,13 @@ class Sponsor {
   type: string;
 
   @Column()
+  @Exclude()
   address: string;
+
+  @Expose({ name: 'addressAsJson' })
+  getAddressAsJson(): IAddressAsJson {
+    return JSON.parse(this.address);
+  }
 
   @CreateDateColumn()
   created_at: Date;

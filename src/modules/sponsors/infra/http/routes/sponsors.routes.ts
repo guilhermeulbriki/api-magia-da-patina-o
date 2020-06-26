@@ -5,7 +5,9 @@ import SponsorController from '../controllers/SponsorsController';
 const sponsorsRouter = Router();
 const sponsorController = new SponsorController();
 
-sponsorsRouter.post('/', sponsorController.create);
 sponsorsRouter.get('/', sponsorController.listAll);
+sponsorsRouter.post('/', sponsorController.create);
+sponsorsRouter.put('/', sponsorController.update);
+sponsorsRouter.delete('/', sponsorController.delete);
 
 export default sponsorsRouter;

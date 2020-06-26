@@ -14,16 +14,7 @@ class ListSponsorsService {
   ) {}
 
   public async execute(): Promise<Sponsors[]> {
-    const sponsors = await this.sponsorRepository.listAll();
-
-    const formattedSponsors = sponsors.map(sponsor => {
-      return {
-        ...sponsor,
-        address: JSON.parse(sponsor.address),
-      };
-    });
-
-    return formattedSponsors;
+    return this.sponsorRepository.listAll();
   }
 }
 

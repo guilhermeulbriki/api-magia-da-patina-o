@@ -3,40 +3,20 @@ import { container } from 'tsyringe';
 
 import CreateSponsorService from '@modules/sponsors/services/CreateSponsorService';
 import ListSponsorsService from '@modules/sponsors/services/ListSponsorsService';
+import UpdateProfileService from '@modules/sponsors/services/UpdateProfileService';
+import DeleteSponsorService from '@modules/sponsors/services/DeleteSponsorService';
+
+import { classToClass } from 'class-transformer';
 
 export default class SponsorController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const {
-      name,
-      email,
-      password,
-      born,
-      rg,
-      cpf,
-      phone,
-      whatsapp,
-      gender,
-      type,
-      address,
-    } = request.body;
+    const data = request.body;
 
     const createSponsor = container.resolve(CreateSponsorService);
 
-    const sponsor = await createSponsor.execute({
-      name,
-      password,
-      email,
-      born,
-      rg,
-      cpf,
-      phone,
-      whatsapp,
-      gender,
-      type,
-      address,
-    });
+    const sponsor = await createSponsor.execute(data);
 
-    return response.json(sponsor);
+    return response.json(classToClass(sponsor));
   }
 
   public async listAll(
@@ -47,6 +27,33 @@ export default class SponsorController {
 
     const sponsors = await listSponsors.execute();
 
-    return response.json(sponsors);
+    return response.json(classToClass(sponsors));
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const id = request.query;
+
+    const data = request.body;
+
+    const sponsor = {
+      id,
+      ...data,
+    };
+
+    const updateSponsor = container.resolve(UpdateProfileService);
+
+    const updatedSponsor = await updateSponsor.execute(sponsor);
+
+    return response.json(classToClass(updatedSponsor));
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.query;
+
+    const deleteSponsor = container.resolve(DeleteSponsorService);
+
+    await deleteSponsor.execute(String(id));
+
+    return response.status(204).send();
   }
 }
