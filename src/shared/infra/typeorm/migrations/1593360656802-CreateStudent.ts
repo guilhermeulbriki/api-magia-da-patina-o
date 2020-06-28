@@ -50,8 +50,12 @@ export default class CreateStudent1593360656802 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'born',
-            type: 'timestamp',
+            name: 'age',
+            type: 'integer',
+          },
+          {
+            name: 'group',
+            type: 'varchar',
           },
           {
             name: 'sponsor_id',

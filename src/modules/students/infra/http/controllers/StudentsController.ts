@@ -21,9 +21,15 @@ export default class StudentsController {
   }
 
   public async list(request: Request, response: Response): Promise<Response> {
+    const { age, group, name } = request.query;
+
     const listStudents = container.resolve(ListStudentsService);
 
-    const students = await listStudents.execute();
+    const students = await listStudents.execute({
+      age: Number(age),
+      group: String(group),
+      name: String(name),
+    });
 
     return response.json(classToClass(students));
   }

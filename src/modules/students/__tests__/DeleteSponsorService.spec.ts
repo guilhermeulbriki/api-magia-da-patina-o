@@ -20,7 +20,8 @@ describe('DeleteStudent', () => {
       rg: '427847284',
       phone: '123',
       whatsapp: '123',
-      born: new Date(2020),
+      age: 10,
+      group: 'preta',
       gender: 'masculino',
       sponsor_id: '123',
     });

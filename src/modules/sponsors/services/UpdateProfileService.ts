@@ -5,8 +5,8 @@ import { injectable, inject } from 'tsyringe';
 
 import ISponsorRepository from '@modules/sponsors/repositories/ISponsorRepository';
 
+import getAgeByDate from '@shared/utils/getAgeByDate';
 import Sponsors from '../infra/typeorm/entities/Sponsors';
-import getAgeByDate from '../utils/getAgeByDate';
 
 interface IRequestDTO {
   id: string;

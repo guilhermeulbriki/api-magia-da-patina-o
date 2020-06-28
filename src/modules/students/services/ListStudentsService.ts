@@ -6,6 +6,12 @@ import IStudentRepository from '@modules/students/repositories/IStudentRepositor
 
 import Student from '../infra/typeorm/entities/Students';
 
+interface IRequestDTO {
+  name: string;
+  age: number | undefined;
+  group: string | undefined;
+}
+
 @injectable()
 class ListStudentsService {
   constructor(
@@ -13,8 +19,22 @@ class ListStudentsService {
     private studentRepository: IStudentRepository,
   ) {}
 
-  public async execute(): Promise<Student[]> {
-    return this.studentRepository.list();
+  public async execute(data: IRequestDTO): Promise<Student[] | undefined> {
+    let students = await this.studentRepository.list();
+
+    if (data.name !== undefined && data.name.length > 1) {
+      students = students.filter(student => !student.name.indexOf(data.name));
+    }
+
+    if (data.age !== undefined && data.age > 0) {
+      students = students.filter(student => student.age === data.age);
+    }
+
+    if (data.group !== undefined && data.group.length > 1) {
+      students = students.filter(student => student.group === data.group);
+    }
+
+    return students;
   }
 }
 

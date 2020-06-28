@@ -11,10 +11,11 @@ interface IRequestDTO {
   id: string;
   name: string;
   email: string;
-  born: Date;
+  age: number;
   rg: string;
   cpf: string;
   phone: string;
+  group: string;
   whatsapp: string;
   gender: 'masculino' | 'feminino';
 }
@@ -57,12 +58,13 @@ class UpdateStudantService {
 
     student.name = data.name;
     student.email = data.email;
-    student.born = data.born;
+    student.age = data.age;
     student.rg = data.rg;
     student.cpf = data.cpf;
     student.phone = data.phone;
     student.whatsapp = data.whatsapp;
     student.gender = data.gender;
+    student.group = data.group;
 
     return this.studentRepository.save(student);
   }

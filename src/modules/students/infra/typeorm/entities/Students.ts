@@ -37,7 +37,10 @@ class Student {
   gender: string;
 
   @Column()
-  born: Date;
+  age: number;
+
+  @Column()
+  group: string;
 
   @CreateDateColumn()
   created_at: Date;

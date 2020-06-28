@@ -11,10 +11,11 @@ interface IRequestDTO {
   student_data: {
     name: string;
     email: string;
-    born: Date;
+    age: number;
     rg: string;
     cpf: string;
     phone: string;
+    group: string;
     whatsapp: string;
     gender: 'masculino' | 'feminino';
   };
@@ -59,12 +60,13 @@ class CreateStudentService {
     const formateData = {
       name: student_data.name,
       email: student_data.email,
-      born: student_data.born,
+      age: student_data.age,
       rg: student_data.rg,
       cpf: student_data.cpf,
       phone: student_data.phone,
       whatsapp: student_data.whatsapp,
       gender: student_data.gender,
+      group: student_data.group,
       sponsor_id,
     };
 
