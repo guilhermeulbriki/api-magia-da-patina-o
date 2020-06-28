@@ -1,4 +1,4 @@
-import { getRepository, Repository, DeleteResult } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 
 import ISponsorRepository from '@modules/sponsors/repositories/ISponsorRepository';
 import ICreateSponsorDTO from '@modules/sponsors/dtos/ICreateSponsorDTO';
@@ -17,11 +17,11 @@ class SponsorRepository implements ISponsorRepository {
   }
 
   public async create(sponsorData: ICreateSponsorDTO): Promise<Sponsor> {
-    const appointment = await this.ormRepository.create(sponsorData);
+    const sponsor = await this.ormRepository.create(sponsorData);
 
-    await this.ormRepository.save(appointment);
+    await this.ormRepository.save(sponsor);
 
-    return appointment;
+    return sponsor;
   }
 
   public async save(sponsor: Sponsor): Promise<Sponsor> {
