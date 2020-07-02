@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 
 import Sponsor from '@modules/sponsors/infra/typeorm/entities/Sponsors';
+import { Exclude } from 'class-transformer';
 
 @Entity('students')
 class Student {
