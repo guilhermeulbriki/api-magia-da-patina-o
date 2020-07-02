@@ -7,6 +7,5 @@ const sponsorController = new SponsorController();
 
 sponsorsRouter.get('/', sponsorController.list);
 sponsorsRouter.post('/', sponsorController.create);
-sponsorsRouter.delete('/', sponsorController.delete);
 
 export default sponsorsRouter;

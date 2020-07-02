@@ -3,5 +3,8 @@ declare namespace Express {
     sponsor: {
       id: string;
     };
+    admin: {
+      id: string;
+    };
   }
 }
