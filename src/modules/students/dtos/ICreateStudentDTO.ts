@@ -6,7 +6,7 @@ export default interface ICreateStudentDTO {
   cpf: string;
   phone: string;
   whatsapp: string;
-  group: string;
   gender: 'masculino' | 'feminino';
+  group_id: string;
   sponsor_id: string;
 }

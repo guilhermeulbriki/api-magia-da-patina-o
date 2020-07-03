@@ -11,6 +11,9 @@ import StudentRepository from '@modules/students/infra/typeorm/repositories/Stud
 import IAdminRepository from '@modules/administrators/repositories/IAdminRepository';
 import AdminRepository from '@modules/administrators/infra/typeorm/repositories/AdminRepository';
 
+import IGroupsRepository from '@modules/groups/repositories/IGroupsRepository';
+import GroupsRepository from '@modules/groups/infra/typeorm/repositories/GroupsRepository';
+
 container.registerSingleton<ISponsorRepository>(
   'SponsorRepository',
   SponsorRepository,
@@ -24,4 +27,9 @@ container.registerSingleton<IStudentRepository>(
 container.registerSingleton<IAdminRepository>(
   'AdminRepository',
   AdminRepository,
+);
+
+container.registerSingleton<IGroupsRepository>(
+  'GroupsRepository',
+  GroupsRepository,
 );

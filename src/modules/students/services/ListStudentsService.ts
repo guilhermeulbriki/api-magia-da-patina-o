@@ -31,7 +31,7 @@ class ListStudentsService {
     }
 
     if (data.group !== undefined && data.group.length > 1) {
-      students = students.filter(student => student.group === data.group);
+      students = students.filter(student => student.group.color === data.group);
     }
 
     return students;

@@ -15,8 +15,8 @@ interface IRequestDTO {
     rg: string;
     cpf: string;
     phone: string;
-    group: string;
     whatsapp: string;
+    group_id: string;
     gender: 'masculino' | 'feminino';
   };
   sponsor_id: string;
@@ -66,7 +66,7 @@ class CreateStudentService {
       phone: student_data.phone,
       whatsapp: student_data.whatsapp,
       gender: student_data.gender,
-      group: student_data.group,
+      group_id: student_data.group_id,
       sponsor_id,
     };
 

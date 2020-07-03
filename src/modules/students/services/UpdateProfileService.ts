@@ -15,7 +15,6 @@ interface IRequestDTO {
   rg: string;
   cpf: string;
   phone: string;
-  group: string;
   whatsapp: string;
   gender: 'masculino' | 'feminino';
 }
@@ -64,7 +63,6 @@ class UpdateStudantService {
     student.phone = data.phone;
     student.whatsapp = data.whatsapp;
     student.gender = data.gender;
-    student.group = data.group;
 
     return this.studentRepository.save(student);
   }

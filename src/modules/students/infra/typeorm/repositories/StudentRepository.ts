@@ -14,7 +14,7 @@ class StudentRepository implements IStudentRepository {
 
   public async list(): Promise<Student[]> {
     return this.ormRepository.find({
-      relations: ['sponsor'],
+      relations: ['sponsor', 'group'],
     });
   }
 
@@ -57,7 +57,7 @@ class StudentRepository implements IStudentRepository {
   public async findById(id: string): Promise<Student | undefined> {
     return this.ormRepository.findOne({
       where: { id },
-      relations: ['sponsor'],
+      relations: ['sponsor', 'group'],
     });
   }
 

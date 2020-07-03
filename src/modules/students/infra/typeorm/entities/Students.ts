@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 import Sponsor from '@modules/sponsors/infra/typeorm/entities/Sponsors';
-import { Exclude } from 'class-transformer';
+import Group from '@modules/groups/infra/typeorm/entities/Groups';
 
 @Entity('students')
 class Student {
@@ -40,9 +40,6 @@ class Student {
   @Column()
   age: number;
 
-  @Column()
-  group: string;
-
   @CreateDateColumn()
   created_at: Date;
 
@@ -55,6 +52,13 @@ class Student {
   @ManyToOne(() => Sponsor)
   @JoinColumn({ name: 'sponsor_id' })
   sponsor: Sponsor;
+
+  @Column()
+  group_id: string;
+
+  @ManyToOne(() => Group)
+  @JoinColumn({ name: 'group_id' })
+  group: Group;
 }
 
 export default Student;

@@ -21,7 +21,7 @@ describe('UpdateProfile', () => {
       phone: '123',
       whatsapp: '123',
       age: 10,
-      group: 'preta',
+      group_id: '123',
       gender: 'masculino',
       sponsor_id: '123',
     });
@@ -35,7 +35,6 @@ describe('UpdateProfile', () => {
       phone: '123',
       whatsapp: '123',
       age: 10,
-      group: 'preta',
       gender: 'masculino',
     });
 
@@ -54,7 +53,6 @@ describe('UpdateProfile', () => {
         phone: '123',
         whatsapp: '123',
         age: 10,
-        group: 'preta',
         gender: 'masculino',
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -69,7 +67,7 @@ describe('UpdateProfile', () => {
       phone: '123',
       whatsapp: '123',
       age: 10,
-      group: 'preta',
+      group_id: '123',
       gender: 'masculino',
       sponsor_id: '123',
     });
@@ -82,7 +80,7 @@ describe('UpdateProfile', () => {
       phone: '123',
       whatsapp: '123',
       age: 10,
-      group: 'preta',
+      group_id: '123',
       gender: 'masculino',
       sponsor_id: '123',
     });
@@ -97,7 +95,6 @@ describe('UpdateProfile', () => {
         phone: '123',
         whatsapp: '123',
         age: 10,
-        group: 'preta',
         gender: 'masculino',
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -112,7 +109,7 @@ describe('UpdateProfile', () => {
       phone: '123',
       whatsapp: '123',
       age: 10,
-      group: 'preta',
+      group_id: '123',
       gender: 'masculino',
       sponsor_id: '123',
     });
@@ -125,7 +122,7 @@ describe('UpdateProfile', () => {
       phone: '123',
       whatsapp: '123',
       age: 10,
-      group: 'preta',
+      group_id: '123',
       gender: 'masculino',
       sponsor_id: '123',
     });
@@ -140,7 +137,6 @@ describe('UpdateProfile', () => {
         phone: '123',
         whatsapp: '123',
         age: 10,
-        group: 'preta',
         gender: 'masculino',
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -155,7 +151,7 @@ describe('UpdateProfile', () => {
       phone: '123',
       whatsapp: '123',
       age: 10,
-      group: 'preta',
+      group_id: '123',
       gender: 'masculino',
       sponsor_id: '123',
     });
@@ -168,7 +164,7 @@ describe('UpdateProfile', () => {
       phone: '123',
       whatsapp: '123',
       age: 10,
-      group: 'preta',
+      group_id: '123',
       gender: 'masculino',
       sponsor_id: '123',
     });
@@ -183,7 +179,6 @@ describe('UpdateProfile', () => {
         phone: '123',
         whatsapp: '123',
         age: 10,
-        group: 'preta',
         gender: 'masculino',
       }),
     ).rejects.toBeInstanceOf(AppError);

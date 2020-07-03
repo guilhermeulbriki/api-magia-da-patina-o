@@ -21,7 +21,7 @@ describe('DeleteStudent', () => {
       phone: '123',
       whatsapp: '123',
       age: 10,
-      group: 'preta',
+      group_id: '123',
       gender: 'masculino',
       sponsor_id: '123',
     });
