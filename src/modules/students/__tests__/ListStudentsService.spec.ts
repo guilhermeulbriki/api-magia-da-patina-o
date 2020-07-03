@@ -89,12 +89,6 @@ describe('ListStudents', () => {
   });
 
   // it('should list only students with "preta" group', async () => {
-  //   const group = await createGroup.execute({
-  //     city: 'fw',
-  //     instructor: 'julia',
-  //     color: 'preta',
-  //   });
-
   //   const student = await fakeStudentsRepository.create({
   //     name: 'nome',
   //     email: 'email@gmail.com',
@@ -103,7 +97,7 @@ describe('ListStudents', () => {
   //     phone: '123',
   //     whatsapp: '123',
   //     age: 10,
-  //     group_id: group.id,
+  //     group_id: '123',
   //     gender: 'masculino',
   //     sponsor_id: '456',
   //   });
@@ -121,11 +115,6 @@ describe('ListStudents', () => {
   //     sponsor_id: '456',
   //   });
 
-  //   const createdStudent = {
-  //     ...student,
-  //     group,
-  //   };
-
   //   const dataFilter = {
   //     age: 0,
   //     name: '',
@@ -134,7 +123,7 @@ describe('ListStudents', () => {
 
   //   const students = await listStudent.execute(dataFilter);
 
-  //   expect(students).toEqual([createdStudent]);
+  //   expect(students).toEqual([student]);
   // });
 
   it('should list only students with name like "ed"', async () => {

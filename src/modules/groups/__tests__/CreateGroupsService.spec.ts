@@ -24,7 +24,7 @@ describe('CreateGroups', () => {
     expect(group.color).toBe('branca');
   });
 
-  it('should not be able to create a new group with same color and city', async () => {
+  it('should not be able to create a new group with same color and city from other', async () => {
     await createGroup.execute({
       city: 'fw',
       color: 'branca',
