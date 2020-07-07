@@ -28,7 +28,7 @@ describe('DeleteStudent', () => {
 
     await deleteSponsor.execute(student.id);
 
-    const students = await fakeStudentsRepository.list();
+    const students = await fakeStudentsRepository.list(0);
 
     expect(students).toEqual([]);
   });

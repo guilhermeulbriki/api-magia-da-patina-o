@@ -43,6 +43,7 @@ describe('ListStudents', () => {
       age: 0,
       name: '',
       group: '',
+      skip: 0,
     };
 
     const students = await listStudent.execute(dataFilter);
@@ -81,6 +82,7 @@ describe('ListStudents', () => {
       age: 10,
       name: '',
       group: '',
+      skip: 0,
     };
 
     const students = await listStudent.execute(dataFilter);
@@ -157,6 +159,7 @@ describe('ListStudents', () => {
       age: 0,
       name: 'ed',
       group: '',
+      skip: 0,
     };
 
     const students = await listStudent.execute(dataFilter);

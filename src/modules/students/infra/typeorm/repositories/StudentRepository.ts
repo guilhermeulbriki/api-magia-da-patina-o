@@ -12,9 +12,12 @@ class StudentRepository implements IStudentRepository {
     this.ormRepository = getRepository(Student);
   }
 
-  public async list(): Promise<Student[]> {
+  public async list(skip: number): Promise<Student[]> {
     return this.ormRepository.find({
       relations: ['sponsor', 'group'],
+      order: { created_at: 'DESC' },
+      skip,
+      take: 3,
     });
   }
 

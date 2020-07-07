@@ -10,6 +10,7 @@ interface IRequestDTO {
   name: string;
   age: number | undefined;
   group: string | undefined;
+  skip: number;
 }
 
 @injectable()
@@ -20,7 +21,8 @@ class ListStudentsService {
   ) {}
 
   public async execute(data: IRequestDTO): Promise<Student[] | undefined> {
-    let students = await this.studentRepository.list();
+    const page = data.skip * 3;
+    let students = await this.studentRepository.list(page);
 
     if (data.name !== undefined && data.name.length > 1) {
       students = students.filter(student => !student.name.indexOf(data.name));

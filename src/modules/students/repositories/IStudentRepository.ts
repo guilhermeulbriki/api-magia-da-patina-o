@@ -2,7 +2,7 @@ import Student from '../infra/typeorm/entities/Students';
 import ICreateStudentDTO from '../dtos/ICreateStudentDTO';
 
 export default interface IStudentRepository {
-  list(): Promise<Student[]>;
+  list(skip: number): Promise<Student[]>;
   create(data: ICreateStudentDTO): Promise<Student>;
   save(sponsor: Student): Promise<Student>;
   delete(id: string): Promise<void>;

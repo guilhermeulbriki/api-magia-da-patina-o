@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import CreateGroupService from '@modules/groups/services/CreateGroupService';
-import ListGroupsService from '@modules/groups/services/ListGroupsService';
 import ShowGroupService from '@modules/groups/services/ShowGroupService';
 import DeleteGroupService from '@modules/groups/services/DeleteGroupService';
 import UpdateGroupService from '@modules/groups/services/UpdateGroupService';
@@ -18,16 +17,6 @@ export default class GroupsController {
     const group = await showGroup.execute(id);
 
     return response.json(classToClass(group));
-  }
-
-  public async list(request: Request, response: Response): Promise<Response> {
-    const { city } = request.query;
-
-    const listGroups = container.resolve(ListGroupsService);
-
-    const groups = await listGroups.execute(String(city));
-
-    return response.json(classToClass(groups));
   }
 
   public async create(request: Request, response: Response): Promise<Response> {

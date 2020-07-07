@@ -22,6 +22,7 @@ export default class StudentsController {
 
   public async list(request: Request, response: Response): Promise<Response> {
     const { age, group, name } = request.query;
+    const { skip } = request.params;
 
     const listStudents = container.resolve(ListStudentsService);
 
@@ -29,6 +30,7 @@ export default class StudentsController {
       age: Number(age),
       group: String(group),
       name: String(name),
+      skip: Number(skip),
     });
 
     return response.json(classToClass(students));

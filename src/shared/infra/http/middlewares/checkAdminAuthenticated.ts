@@ -8,6 +8,7 @@ interface ITokenPayload {
   iat: number;
   exp: number;
   sub: string;
+  who: 'admin';
 }
 
 export default function ensureAuthenticated(
@@ -26,14 +27,16 @@ export default function ensureAuthenticated(
   try {
     const decoded = verify(token, authConfig.jwt.secret);
 
-    const { sub } = decoded as ITokenPayload;
+    const { sub, who } = decoded as ITokenPayload;
 
-    request.sponsor = {
-      id: sub,
-    };
+    if (who === 'admin') {
+      request.admin = {
+        id: sub,
+      };
+    }
 
     return next();
   } catch {
-    throw new AppError('Invalid JST token', 401);
+    throw new AppError('Invalid JWT token', 401);
   }
 }

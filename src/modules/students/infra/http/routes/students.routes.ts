@@ -1,17 +1,17 @@
 import { Router } from 'express';
 
-import ensureAuthentication from '@modules/sponsors/infra/http/middlewares/ensureAuthenticated';
+import checkAuthenticated from '@shared/infra/http/middlewares/checkAuthenticated';
 import StudentsController from '../controllers/StudentsController';
 
 const studentRouter = Router();
 const studentController = new StudentsController();
 
-studentRouter.use(ensureAuthentication);
+studentRouter.use(checkAuthenticated);
 
-studentRouter.get('/', studentController.list);
+studentRouter.get('/:skip', studentController.list);
 studentRouter.get('/profile/', studentController.show);
 studentRouter.post('/', studentController.create);
-studentRouter.put('/profile/', studentController.update);
+studentRouter.put('/', studentController.update);
 studentRouter.delete('/', studentController.delete);
 
 export default studentRouter;

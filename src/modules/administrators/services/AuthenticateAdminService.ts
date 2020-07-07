@@ -48,7 +48,7 @@ class AuthenticateSponsorService {
 
     const { secret, expiresIn } = authConfig.jwt;
 
-    const token = sign({}, secret, {
+    const token = sign({ who: 'admin' }, secret, {
       subject: admin.id,
       expiresIn,
     });

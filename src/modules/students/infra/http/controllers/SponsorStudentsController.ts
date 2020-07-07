@@ -7,7 +7,7 @@ import { classToClass } from 'class-transformer';
 
 export default class SponsorStudentsController {
   public async find(request: Request, response: Response): Promise<Response> {
-    const sponsor_id = request.sponsor.id;
+    const { sponsor_id } = request.params;
 
     const findSponsorStudents = container.resolve(FindBySponsorService);
 

@@ -1,13 +1,13 @@
 import { Router } from 'express';
 
-import ensureAuthentication from '@modules/sponsors/infra/http/middlewares/ensureAuthenticated';
+import checkAuthenticated from '@shared/infra/http/middlewares/checkAuthenticated';
 import SponsorStudentsController from '../controllers/SponsorStudentsController';
 
 const sponsorStudentsRouter = Router();
 const sponsorStudentsController = new SponsorStudentsController();
 
-sponsorStudentsRouter.use(ensureAuthentication);
+sponsorStudentsRouter.use(checkAuthenticated);
 
-sponsorStudentsRouter.get('/', sponsorStudentsController.find);
+sponsorStudentsRouter.get('/:sponsor_id', sponsorStudentsController.find);
 
 export default sponsorStudentsRouter;
