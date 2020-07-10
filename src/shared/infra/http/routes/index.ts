@@ -10,6 +10,7 @@ import adminSessionsRouter from '@modules/administrators/infra/http/routes/sessi
 import studentsRouter from '@modules/students/infra/http/routes/students.routes';
 import sponsorStudentsRouter from '@modules/students/infra/http/routes/sponsorStudents.routes';
 import groupsRouter from '@modules/groups/infra/http/routes/groups.routes';
+import schedulesRouter from '@modules/schedules/infra/http/routes/schedules.routes';
 
 const routes = Router();
 
@@ -23,5 +24,6 @@ routes.use('/sessions/admin', adminSessionsRouter);
 routes.use('/students', studentsRouter);
 routes.use('/sponsor-students', sponsorStudentsRouter);
 routes.use('/groups', groupsRouter);
+routes.use('/schedules', schedulesRouter);
 
 export default routes;

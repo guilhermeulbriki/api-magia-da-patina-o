@@ -14,6 +14,9 @@ import AdminRepository from '@modules/administrators/infra/typeorm/repositories/
 import IGroupsRepository from '@modules/groups/repositories/IGroupsRepository';
 import GroupsRepository from '@modules/groups/infra/typeorm/repositories/GroupsRepository';
 
+import ISchedulesRepository from '@modules/schedules/repositories/ISchedulesRepository';
+import SchedulesRepository from '@modules/schedules/infra/typeorm/repositories/ScheduleRepository';
+
 container.registerSingleton<ISponsorRepository>(
   'SponsorRepository',
   SponsorRepository,
@@ -32,4 +35,9 @@ container.registerSingleton<IAdminRepository>(
 container.registerSingleton<IGroupsRepository>(
   'GroupsRepository',
   GroupsRepository,
+);
+
+container.registerSingleton<ISchedulesRepository>(
+  'SchedulesRepository',
+  SchedulesRepository,
 );

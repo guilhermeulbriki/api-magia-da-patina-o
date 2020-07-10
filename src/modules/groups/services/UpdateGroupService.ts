@@ -11,6 +11,7 @@ interface IRequestDTO {
   id: string;
   city: string;
   color: string;
+  name: string;
   instructor: string;
 }
 
@@ -25,6 +26,7 @@ class UpdateGroupService {
     city,
     instructor,
     color,
+    name,
     id,
   }: IRequestDTO): Promise<Group> {
     const group = await this.groupsRepository.findById(id);
@@ -33,20 +35,21 @@ class UpdateGroupService {
       throw new AppError('Turma não encontrada');
     }
 
-    const checkExistGroup = await this.groupsRepository.findByCityAndColor({
+    const checkExistGroup = await this.groupsRepository.findByCityAndName({
       city,
-      color,
+      name,
     });
 
     if (checkExistGroup) {
-      if (group.city !== city || group.color !== color) {
+      if (group.city !== city || group.name !== name) {
         throw new AppError(
-          'Ops, já existe uma turma com está cor na sua cidade',
+          'Ops, já existe uma turma com este nome na sua cidade',
         );
       }
     }
 
     group.city = city;
+    group.name = name;
     group.color = color;
     group.instructor = instructor;
 

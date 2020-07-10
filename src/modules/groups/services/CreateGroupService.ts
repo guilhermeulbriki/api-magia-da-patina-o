@@ -8,6 +8,7 @@ import IGroupsRepository from '@modules/groups/repositories/IGroupsRepository';
 import Group from '../infra/typeorm/entities/Groups';
 
 interface IRequestDTO {
+  name: string;
   city: string;
   color: string;
   instructor: string;
@@ -24,17 +25,21 @@ class CreateGroupService {
     city,
     color,
     instructor,
+    name,
   }: IRequestDTO): Promise<Group> {
-    const checkExistGroup = await this.groupsRepository.findByCityAndColor({
+    const checkExistGroup = await this.groupsRepository.findByCityAndName({
       city,
-      color,
+      name,
     });
 
     if (checkExistGroup) {
-      throw new AppError('Ops, já existe uma turma com está cor na sua cidade');
+      throw new AppError(
+        'Ops, já existe uma turma com este nome na sua cidade',
+      );
     }
 
     return this.groupsRepository.create({
+      name,
       city,
       color,
       instructor,

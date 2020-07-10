@@ -2,7 +2,7 @@ import { getRepository, Repository } from 'typeorm';
 
 import IGroupsRepository from '@modules/groups/repositories/IGroupsRepository';
 import ICreateGroupsDTO from '@modules/groups/dtos/ICreateGroupsDTO';
-import IFindByCityAndColor from '@modules/groups/dtos/IFindByCityAndColor';
+import IFindByCityAndName from '@modules/groups/dtos/IFindByCityAndName';
 
 import Group from '../entities/Groups';
 
@@ -47,12 +47,12 @@ class GroupRepository implements IGroupsRepository {
     });
   }
 
-  public async findByCityAndColor({
+  public async findByCityAndName({
     city,
-    color,
-  }: IFindByCityAndColor): Promise<Group | undefined> {
+    name,
+  }: IFindByCityAndName): Promise<Group | undefined> {
     return this.ormRepository.findOne({
-      where: { city, color },
+      where: { city, name },
     });
   }
 }

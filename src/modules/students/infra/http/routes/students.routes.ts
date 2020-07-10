@@ -12,6 +12,7 @@ studentRouter.get('/:skip', studentController.list);
 studentRouter.get('/profile/', studentController.show);
 studentRouter.post('/', studentController.create);
 studentRouter.put('/', studentController.update);
+studentRouter.patch('/', studentController.alterGroup);
 studentRouter.delete('/', studentController.delete);
 
 export default studentRouter;

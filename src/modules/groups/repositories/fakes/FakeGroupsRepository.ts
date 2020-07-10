@@ -2,7 +2,7 @@ import { uuid } from 'uuidv4';
 
 import IGroupsRepository from '@modules/groups/repositories/IGroupsRepository';
 import ICreateGroupsDTO from '@modules/groups/dtos/ICreateGroupsDTO';
-import IFindByCityAndColor from '@modules/groups/dtos/IFindByCityAndColor';
+import IFindByCityAndName from '@modules/groups/dtos/IFindByCityAndName';
 
 import Group from '../../infra/typeorm/entities/Groups';
 
@@ -51,12 +51,12 @@ class FakeGroupsRepository implements IGroupsRepository {
     return findedGroup;
   }
 
-  public async findByCityAndColor({
+  public async findByCityAndName({
     city,
-    color,
-  }: IFindByCityAndColor): Promise<Group | undefined> {
+    name,
+  }: IFindByCityAndName): Promise<Group | undefined> {
     const findedGroup = this.groups.find(
-      group => group.city === city && group.color === color,
+      group => group.city === city && group.name === name,
     );
 
     return findedGroup;

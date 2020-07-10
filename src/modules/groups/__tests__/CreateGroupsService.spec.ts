@@ -15,6 +15,7 @@ describe('CreateGroups', () => {
 
   it('should be able to create a new group', async () => {
     const group = await createGroup.execute({
+      name: 'Branca manhã',
       city: 'Frederico Westphalen',
       color: 'branca',
       instructor: 'Julia Frizon',
@@ -24,8 +25,9 @@ describe('CreateGroups', () => {
     expect(group.color).toBe('branca');
   });
 
-  it('should not be able to create a new group with same color and city from other', async () => {
+  it('should not be able to create a new group with same name and city from other', async () => {
     await createGroup.execute({
+      name: 'SAME-NAME',
       city: 'fw',
       color: 'branca',
       instructor: 'Julia Frizon',
@@ -33,6 +35,7 @@ describe('CreateGroups', () => {
 
     await expect(
       createGroup.execute({
+        name: 'SAME-NAME',
         city: 'fw',
         color: 'branca',
         instructor: 'Julia Frizon',

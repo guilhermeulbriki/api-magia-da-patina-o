@@ -15,6 +15,9 @@ class Groups {
   color: string;
 
   @Column()
+  name: string;
+
+  @Column()
   city: string;
 
   @Column()

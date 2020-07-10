@@ -14,7 +14,7 @@ class FakeStudentsRepository implements IStudentRepository {
     return findSponsorById;
   }
 
-  public async list(skip: number): Promise<Student[]> {
+  public async list(_: number): Promise<Student[]> {
     return this.students;
   }
 

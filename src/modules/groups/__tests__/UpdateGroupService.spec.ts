@@ -14,6 +14,7 @@ describe('UpdateGroup', () => {
 
   it('should be able to update a group', async () => {
     const group = await fakeGroupsRepository.create({
+      name: 'branca',
       city: 'fw',
       color: 'branca',
       instructor: 'gui',
@@ -21,6 +22,7 @@ describe('UpdateGroup', () => {
 
     const updatedGroup = await updateGroup.execute({
       id: group.id,
+      name: 'branca',
       city: 'fw',
       color: 'COR-ALTERADA',
       instructor: 'gui',
@@ -33,6 +35,7 @@ describe('UpdateGroup', () => {
     await expect(
       updateGroup.execute({
         id: 'haufhaufaf',
+        name: 'branca',
         city: 'fw',
         color: 'COR-ALTERADA',
         instructor: 'gui',
@@ -40,14 +43,16 @@ describe('UpdateGroup', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('should not be able to update a group with same color and city from other', async () => {
+  it('should not be able to update a group with same name and city from other', async () => {
     const group = await fakeGroupsRepository.create({
+      name: 'branca',
       city: 'fw',
       color: 'branca',
       instructor: 'Julia Frizon',
     });
 
     await fakeGroupsRepository.create({
+      name: 'SAME-NAME',
       city: 'fw',
       color: 'azul',
       instructor: 'Julia Frizon',
@@ -56,6 +61,7 @@ describe('UpdateGroup', () => {
     await expect(
       updateGroup.execute({
         id: group.id,
+        name: 'SAME-NAME',
         city: 'fw',
         color: 'azul',
         instructor: 'Julia Frizon',

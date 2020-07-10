@@ -5,6 +5,7 @@ import FindByIdService from '@modules/students/services/FindByIdService';
 import ListStudentsService from '@modules/students/services/ListStudentsService';
 import CreateStudentService from '@modules/students/services/CreateStudentService';
 import UpdateProfileService from '@modules/students/services/UpdateProfileService';
+import AlterUserGroupService from '@modules/students/services/AlterUserGroupService';
 import DeleteSponsorService from '@modules/students/services/DeleteSponsorService';
 
 import { classToClass } from 'class-transformer';
@@ -60,6 +61,19 @@ export default class StudentsController {
       ...student_data,
       id,
     });
+
+    return response.json(classToClass(student));
+  }
+
+  public async alterGroup(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { id, group_id } = request.query;
+
+    const alterGroup = container.resolve(AlterUserGroupService);
+
+    const student = await alterGroup.execute(String(group_id), String(id));
 
     return response.json(classToClass(student));
   }
