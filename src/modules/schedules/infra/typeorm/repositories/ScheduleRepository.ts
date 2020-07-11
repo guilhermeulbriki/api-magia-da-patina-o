@@ -38,10 +38,12 @@ class ScheduleRepository implements ISchedulesRepository {
   }
 
   public async findById(id: string): Promise<Schedule | undefined> {
-    return this.ormRepository.findOne({
+    const schedule = await this.ormRepository.findOne({
       where: { id },
       relations: ['group'],
     });
+
+    return schedule;
   }
 }
 

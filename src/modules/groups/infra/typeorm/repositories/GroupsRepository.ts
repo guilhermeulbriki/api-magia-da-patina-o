@@ -38,6 +38,7 @@ class GroupRepository implements IGroupsRepository {
   public async findById(id: string): Promise<Group | undefined> {
     return this.ormRepository.findOne({
       where: { id },
+      relations: ['schedules'],
     });
   }
 

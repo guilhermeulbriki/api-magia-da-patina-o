@@ -15,6 +15,7 @@ describe('ShowGroup', () => {
 
   it('should be able to get a group with id', async () => {
     const group = await fakeGroupsRepository.create({
+      name: 'branca',
       city: 'fw',
       color: 'branca',
       instructor: 'julia',

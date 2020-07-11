@@ -4,7 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+
+import Schedule from '@modules/schedules/infra/typeorm/entities/Schedule';
 
 @Entity('groups')
 class Groups {
@@ -28,6 +31,9 @@ class Groups {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany(() => Schedule, schedule => schedule.group)
+  schedules: Schedule[];
 }
 
 export default Groups;

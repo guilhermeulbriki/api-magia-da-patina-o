@@ -14,12 +14,14 @@ describe('ListGroups', () => {
 
   it('should be able to list all students', async () => {
     const group1 = await fakeGroupsRepository.create({
+      name: 'branca',
       city: 'fw',
       color: 'branca',
       instructor: 'julia',
     });
 
     const group2 = await fakeGroupsRepository.create({
+      name: 'azul',
       city: 'fw',
       color: 'azul',
       instructor: 'julia',
@@ -32,12 +34,14 @@ describe('ListGroups', () => {
 
   it('should list only groups with city equal "fw"', async () => {
     const group1 = await fakeGroupsRepository.create({
+      name: 'branca',
       city: 'fw',
       color: 'branca',
       instructor: 'julia',
     });
 
     await fakeGroupsRepository.create({
+      name: 'azul',
       city: 'seberi',
       color: 'azul',
       instructor: 'julia',

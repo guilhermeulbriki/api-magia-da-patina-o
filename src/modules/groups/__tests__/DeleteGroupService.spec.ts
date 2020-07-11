@@ -14,6 +14,7 @@ describe('DeleteGroup', () => {
 
   it('should be able to delete a sponsor', async () => {
     const group = await fakeGroupsRepository.create({
+      name: 'branca',
       city: 'fw',
       color: 'branca',
       instructor: 'julia',

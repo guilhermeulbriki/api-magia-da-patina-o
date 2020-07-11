@@ -28,6 +28,7 @@ class UpdateStudantService {
   ) {}
 
   public async execute(data: IRequestDTO): Promise<Schedule> {
+    console.log(data.id);
     const schedule = await this.schedulesRepository.findById(data.id);
 
     if (!schedule) {

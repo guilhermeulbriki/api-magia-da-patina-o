@@ -15,6 +15,7 @@ class ShowScheduleService {
   ) {}
 
   public async execute(id: string): Promise<Schedule | undefined> {
+    console.log(id);
     const schedule = await this.schedulesRepository.findById(id);
 
     if (!schedule) {
