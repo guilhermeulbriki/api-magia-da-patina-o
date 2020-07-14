@@ -11,6 +11,7 @@ import studentsRouter from '@modules/students/infra/http/routes/students.routes'
 import sponsorStudentsRouter from '@modules/students/infra/http/routes/sponsorStudents.routes';
 import groupsRouter from '@modules/groups/infra/http/routes/groups.routes';
 import schedulesRouter from '@modules/schedules/infra/http/routes/schedules.routes';
+import enrollmentsRouter from '@modules/enrollments/infra/http/routes/enrollments.routes';
 
 const routes = Router();
 
@@ -25,5 +26,6 @@ routes.use('/students', studentsRouter);
 routes.use('/sponsor-students', sponsorStudentsRouter);
 routes.use('/groups', groupsRouter);
 routes.use('/schedules', schedulesRouter);
+routes.use('/enrollments', enrollmentsRouter);
 
 export default routes;
