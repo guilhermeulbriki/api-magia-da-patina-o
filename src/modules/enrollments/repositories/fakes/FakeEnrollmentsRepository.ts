@@ -46,6 +46,16 @@ class FakeEnrollmentsRepository implements IEnrollmentsRepository {
 
     return findedEnrollment;
   }
+
+  public async findByStudentId(
+    student_id: string,
+  ): Promise<Enrollment | undefined> {
+    const findedEnrollment = this.enrollments.find(
+      enrollment => enrollment.student_id === student_id,
+    );
+
+    return findedEnrollment;
+  }
 }
 
 export default FakeEnrollmentsRepository;

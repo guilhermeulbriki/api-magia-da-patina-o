@@ -8,6 +8,9 @@ const enrollmentsController = new EnrollmentsController();
 
 enrollmentsRouter.use(checkAuthenticated);
 
+enrollmentsRouter.get('/:id', enrollmentsController.get);
+enrollmentsRouter.get('/', enrollmentsController.show);
 enrollmentsRouter.post('/', enrollmentsController.create);
+enrollmentsRouter.put('/', enrollmentsController.update);
 
 export default enrollmentsRouter;

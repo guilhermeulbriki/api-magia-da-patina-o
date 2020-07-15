@@ -12,7 +12,9 @@ class EnrollmentsRepository implements IEnrollmentsRepository {
   }
 
   public async list(): Promise<Enrollment[]> {
-    return this.ormRepository.find();
+    return this.ormRepository.find({
+      relations: ['student'],
+    });
   }
 
   public async create(student_id: string): Promise<Enrollment> {
@@ -38,6 +40,15 @@ class EnrollmentsRepository implements IEnrollmentsRepository {
   public async findById(id: string): Promise<Enrollment | undefined> {
     return this.ormRepository.findOne({
       where: { id },
+      relations: ['student'],
+    });
+  }
+
+  public async findByStudentId(
+    student_id: string,
+  ): Promise<Enrollment | undefined> {
+    return this.ormRepository.findOne({
+      where: { student_id },
       relations: ['student'],
     });
   }
