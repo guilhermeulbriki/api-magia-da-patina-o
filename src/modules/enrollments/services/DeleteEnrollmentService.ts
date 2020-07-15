@@ -13,6 +13,7 @@ class DeleteEnrollmentService {
   ) {}
 
   public async execute(id: string): Promise<void> {
+    console.log(id);
     const enrollment = await this.enrollmentsRepository.findByStudentId(id);
 
     if (!enrollment) {

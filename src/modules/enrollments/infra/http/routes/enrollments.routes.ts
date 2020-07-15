@@ -12,5 +12,6 @@ enrollmentsRouter.get('/:id', enrollmentsController.get);
 enrollmentsRouter.get('/', enrollmentsController.show);
 enrollmentsRouter.post('/', enrollmentsController.create);
 enrollmentsRouter.put('/', enrollmentsController.update);
+enrollmentsRouter.delete('/:student_id', enrollmentsController.delete);
 
 export default enrollmentsRouter;

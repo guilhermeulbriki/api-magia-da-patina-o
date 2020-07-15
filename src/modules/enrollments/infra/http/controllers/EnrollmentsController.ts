@@ -5,6 +5,7 @@ import ShowEnrollmentService from '@modules/enrollments/services/ShowEnrollmentS
 import ListEnrollmentsService from '@modules/enrollments/services/ListEnrollmentsService';
 import CreateEnrollmentService from '@modules/enrollments/services/CreateEnrollmentService';
 import UpdateEnrollmentService from '@modules/enrollments/services/UpdateEnrollmentService';
+import DeleteEnrollmentService from '@modules/enrollments/services/DeleteEnrollmentService';
 
 import { classToClass } from 'class-transformer';
 
@@ -45,5 +46,15 @@ export default class EnrollmentsController {
     const enrollment = await updateEnrollment.execute(String(student_id));
 
     return response.json(classToClass(enrollment));
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { student_id } = request.params;
+
+    const deleteEnrollment = container.resolve(DeleteEnrollmentService);
+
+    await deleteEnrollment.execute(student_id);
+
+    return response.status(204).send();
   }
 }
