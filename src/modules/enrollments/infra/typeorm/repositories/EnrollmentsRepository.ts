@@ -31,9 +31,9 @@ class EnrollmentsRepository implements IEnrollmentsRepository {
     return this.ormRepository.save(enrollment);
   }
 
-  public async delete(id: string): Promise<void> {
+  public async delete(student_id: string): Promise<void> {
     await this.ormRepository.delete({
-      id,
+      student_id,
     });
   }
 

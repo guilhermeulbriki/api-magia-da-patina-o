@@ -119,6 +119,7 @@ describe('ListStudents', () => {
 
   //   const dataFilter = {
   //     age: 0,
+  //     skip: 0,
   //     name: '',
   //     group: 'preta',
   //   };
