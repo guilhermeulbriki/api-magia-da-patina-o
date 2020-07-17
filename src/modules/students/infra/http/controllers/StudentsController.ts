@@ -12,7 +12,7 @@ import { classToClass } from 'class-transformer';
 
 export default class StudentsController {
   public async show(request: Request, response: Response): Promise<Response> {
-    const { id } = request.query;
+    const { id } = request.params;
 
     const findById = container.resolve(FindByIdService);
 
@@ -23,7 +23,7 @@ export default class StudentsController {
 
   public async list(request: Request, response: Response): Promise<Response> {
     const { age, group, name } = request.query;
-    const { skip } = request.params;
+    const { page } = request.params;
 
     const listStudents = container.resolve(ListStudentsService);
 
@@ -31,7 +31,7 @@ export default class StudentsController {
       age: Number(age),
       group: String(group),
       name: String(name),
-      skip: Number(skip),
+      skip: Number(page),
     });
 
     return response.json(classToClass(students));

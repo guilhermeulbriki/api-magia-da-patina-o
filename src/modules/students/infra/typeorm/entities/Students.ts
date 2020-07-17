@@ -6,10 +6,12 @@ import {
   UpdateDateColumn,
   JoinColumn,
   ManyToOne,
+  OneToOne,
 } from 'typeorm';
 
 import Sponsor from '@modules/sponsors/infra/typeorm/entities/Sponsors';
 import Group from '@modules/groups/infra/typeorm/entities/Groups';
+import Enrollment from '@modules/enrollments/infra/typeorm/entities/Enrollments';
 
 @Entity('students')
 class Student {
@@ -59,6 +61,12 @@ class Student {
   @ManyToOne(() => Group)
   @JoinColumn({ name: 'group_id' })
   group: Group;
+
+  // @Column()
+  // enrollment_id: string;
+
+  @OneToOne(() => Enrollment, enrollment => enrollment.student)
+  enrollment: Enrollment;
 }
 
 export default Student;

@@ -14,7 +14,7 @@ class StudentRepository implements IStudentRepository {
 
   public async list(skip: number): Promise<Student[]> {
     return this.ormRepository.find({
-      relations: ['sponsor', 'group'],
+      relations: ['sponsor', 'group', 'enrollment'],
       order: { created_at: 'DESC' },
       skip,
       take: 3,
@@ -60,7 +60,7 @@ class StudentRepository implements IStudentRepository {
   public async findById(id: string): Promise<Student | undefined> {
     return this.ormRepository.findOne({
       where: { id },
-      relations: ['sponsor', 'group'],
+      relations: ['sponsor', 'group', 'enrollment'],
     });
   }
 

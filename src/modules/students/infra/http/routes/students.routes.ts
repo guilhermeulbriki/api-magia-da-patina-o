@@ -8,8 +8,8 @@ const studentController = new StudentsController();
 
 studentRouter.use(checkAuthenticated);
 
-studentRouter.get('/:skip', studentController.list);
-studentRouter.get('/profile/', studentController.show);
+studentRouter.get('/:page', studentController.list);
+studentRouter.get('/show/:id', studentController.show);
 studentRouter.post('/', studentController.create);
 studentRouter.put('/', studentController.update);
 studentRouter.patch('/', studentController.alterGroup);

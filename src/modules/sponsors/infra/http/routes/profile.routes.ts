@@ -10,5 +10,6 @@ profileRouter.use(checkAuthenticated);
 
 profileRouter.get('/', profileController.show);
 profileRouter.put('/', profileController.update);
+profileRouter.delete('/', profileController.delete);
 
 export default profileRouter;

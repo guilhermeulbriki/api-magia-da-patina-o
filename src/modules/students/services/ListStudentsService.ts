@@ -21,7 +21,7 @@ class ListStudentsService {
   ) {}
 
   public async execute(data: IRequestDTO): Promise<Student[] | undefined> {
-    const page = data.skip * 3;
+    const page = (data.skip - 1) * 3;
     let students = await this.studentRepository.list(page);
 
     if (data.name !== undefined && data.name.length > 1) {

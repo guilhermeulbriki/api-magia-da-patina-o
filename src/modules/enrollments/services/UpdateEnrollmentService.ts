@@ -2,7 +2,6 @@ import 'reflect-metadata';
 
 import AppError from '@shared/errors/AppError';
 import { injectable, inject } from 'tsyringe';
-import { isBefore, isAfter, getYear } from 'date-fns';
 
 import IEnrollmentsRepository from '@modules/enrollments/repositories/IEnrollmentsRepository';
 
@@ -25,22 +24,10 @@ class UpdateEnrollmentService {
     }
 
     const currentDate = new Date(Date.now());
-    const startSeasion = new Date(getYear(currentDate), 6, 15);
-    const endSeasion = new Date(getYear(currentDate), 6, 20);
 
-    if (
-      isBefore(currentDate, startSeasion) ||
-      isAfter(currentDate, endSeasion)
-    ) {
-      throw new AppError('Fora do período de rematrículas');
-    }
+    findedEnrollment.updated_at = currentDate;
 
-    const updatedEnrollment = {
-      ...findedEnrollment,
-      updated_at: currentDate,
-    };
-
-    return this.enrollmentsRepository.save(updatedEnrollment);
+    return this.enrollmentsRepository.save(findedEnrollment);
   }
 }
 

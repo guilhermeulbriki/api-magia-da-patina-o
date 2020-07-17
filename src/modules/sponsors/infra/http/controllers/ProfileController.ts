@@ -3,6 +3,7 @@ import { container } from 'tsyringe';
 
 import UpdateProfileService from '@modules/sponsors/services/UpdateProfileService';
 import FindByIdService from '@modules/sponsors/services/FindByIdService';
+import DeleteSponsorService from '@modules/sponsors/services/DeleteSponsorService';
 
 import { classToClass } from 'class-transformer';
 
@@ -32,5 +33,15 @@ export default class ProfileController {
     const updatedSponsor = await updateSponsor.execute(sponsor);
 
     return response.json(classToClass(updatedSponsor));
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.query;
+
+    const deleteSponsor = container.resolve(DeleteSponsorService);
+
+    await deleteSponsor.execute(String(id));
+
+    return response.status(204).send();
   }
 }
