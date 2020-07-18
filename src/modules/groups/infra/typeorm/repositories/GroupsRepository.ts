@@ -14,7 +14,9 @@ class GroupRepository implements IGroupsRepository {
   }
 
   public async list(): Promise<Group[]> {
-    return this.ormRepository.find();
+    return this.ormRepository.find({
+      relations: ['students'],
+    });
   }
 
   public async create(groupData: ICreateGroupsDTO): Promise<Group> {
@@ -38,7 +40,7 @@ class GroupRepository implements IGroupsRepository {
   public async findById(id: string): Promise<Group | undefined> {
     return this.ormRepository.findOne({
       where: { id },
-      relations: ['schedules'],
+      relations: ['schedules', 'students'],
     });
   }
 

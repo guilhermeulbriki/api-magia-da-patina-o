@@ -8,9 +8,13 @@ import { classToClass } from 'class-transformer';
 
 export default class SponsorController {
   public async list(request: Request, response: Response): Promise<Response> {
+    const { name } = request.query;
+
     const listSponsors = container.resolve(ListSponsorsService);
 
-    const sponsors = await listSponsors.execute();
+    const sponsors = await listSponsors.execute({
+      name: String(name),
+    });
 
     return response.json(classToClass(sponsors));
   }

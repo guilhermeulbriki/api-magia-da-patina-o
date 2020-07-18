@@ -8,10 +8,16 @@ import { classToClass } from 'class-transformer';
 export default class AdminController {
   public async create(request: Request, response: Response): Promise<Response> {
     const data = request.body;
+    const { acessCode } = request.query;
 
     const createAdmin = container.resolve(CreateAdminService);
 
-    const admin = await createAdmin.execute(data);
+    const formatedData = {
+      data,
+      acessCode: String(acessCode),
+    };
+
+    const admin = await createAdmin.execute(formatedData);
 
     return response.json(classToClass(admin));
   }

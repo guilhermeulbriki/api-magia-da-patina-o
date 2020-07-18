@@ -6,6 +6,10 @@ import ISponsorRepository from '@modules/sponsors/repositories/ISponsorRepositor
 
 import Sponsors from '../infra/typeorm/entities/Sponsors';
 
+interface IRequestDTO {
+  name: string;
+}
+
 @injectable()
 class ListSponsorsService {
   constructor(
@@ -13,8 +17,14 @@ class ListSponsorsService {
     private sponsorRepository: ISponsorRepository,
   ) {}
 
-  public async execute(): Promise<Sponsors[]> {
-    return this.sponsorRepository.listAll();
+  public async execute(data: IRequestDTO): Promise<Sponsors[]> {
+    let sponsors = await this.sponsorRepository.listAll();
+
+    if (data.name !== undefined && data.name.length > 1) {
+      sponsors = sponsors.filter(sponsor => !sponsor.name.indexOf(data.name));
+    }
+
+    return sponsors;
   }
 }
 

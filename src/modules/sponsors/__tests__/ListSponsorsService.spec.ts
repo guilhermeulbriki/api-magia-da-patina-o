@@ -40,8 +40,50 @@ describe('ListSponsors', () => {
       address: 'address',
     });
 
-    const sponsors = await listSponsors.execute();
+    const data = {
+      name: '',
+    };
+
+    const sponsors = await listSponsors.execute(data);
 
     expect(sponsors).toEqual([sponsor1, sponsor2]);
+  });
+
+  it('should list only sponsor with name like "ed"', async () => {
+    const sponsor1 = await fakeSponsorsRepository.create({
+      name: 'eduarda',
+      email: 'email@gmail.com',
+      password: '123',
+      cpf: '123',
+      rg: '123',
+      phone: '123',
+      whatsapp: '123',
+      born: new Date(2020),
+      type: 'mãe',
+      gender: 'masculino',
+      address: 'address',
+    });
+
+    await fakeSponsorsRepository.create({
+      name: 'amanda',
+      email: 'email@gmail.com',
+      password: '123',
+      cpf: '123',
+      rg: '123',
+      phone: '123',
+      whatsapp: '123',
+      born: new Date(2020),
+      type: 'mãe',
+      gender: 'masculino',
+      address: 'address',
+    });
+
+    const data = {
+      name: 'ed',
+    };
+
+    const students = await listSponsors.execute(data);
+
+    expect(students).toEqual([sponsor1]);
   });
 });

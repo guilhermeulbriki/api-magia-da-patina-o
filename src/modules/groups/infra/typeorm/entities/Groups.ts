@@ -7,6 +7,7 @@ import {
   OneToMany,
 } from 'typeorm';
 
+import Student from '@modules/students/infra/typeorm/entities/Students';
 import Schedule from '@modules/schedules/infra/typeorm/entities/Schedule';
 
 @Entity('groups')
@@ -34,6 +35,9 @@ class Groups {
 
   @OneToMany(() => Schedule, schedule => schedule.group)
   schedules: Schedule[];
+
+  @OneToMany(() => Student, student => student.group)
+  students: Student[];
 }
 
 export default Groups;

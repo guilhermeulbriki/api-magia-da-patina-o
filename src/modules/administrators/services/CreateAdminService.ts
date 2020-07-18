@@ -9,11 +9,14 @@ import IHashProvider from '@modules/sponsors/providers/HashProvider/models/IHash
 import Admin from '../infra/typeorm/entities/Admin';
 
 interface IRequestDTO {
-  name: string;
-  password: string;
-  email: string;
-  phone: string;
-  whatsapp: string;
+  data: {
+    name: string;
+    password: string;
+    email: string;
+    phone: string;
+    whatsapp: string;
+  };
+  acessCode: string;
 }
 
 @injectable()
@@ -26,11 +29,15 @@ class CreateAdminService {
     private hashProvider: IHashProvider,
   ) {}
 
-  public async execute(data: IRequestDTO): Promise<Admin> {
+  public async execute({ data, acessCode }: IRequestDTO): Promise<Admin> {
     const checkAdminExists = await this.adminRepository.findByEmail(data.email);
 
     if (checkAdminExists) {
       throw new AppError('Este email já está sendo usado');
+    }
+
+    if (acessCode !== process.env.ACESS_CODE) {
+      throw new AppError('Código de acesso invalido');
     }
 
     const hashedPassword = await this.hashProvider.generateHash(data.password);
