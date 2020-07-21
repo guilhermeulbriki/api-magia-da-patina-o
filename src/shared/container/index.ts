@@ -23,6 +23,9 @@ import EnrollmentsRepository from '@modules/enrollments/infra/typeorm/repositori
 import IShutdownRepository from '@modules/shutdowns/repositories/IShutdownRepository';
 import ShutdownRepository from '@modules/shutdowns/infra/typeorm/repositories/ShutdownRepository';
 
+import ICompetitionRepository from '@modules/competitions/repositories/ICompetitionRepository';
+import CompetitionRepository from '@modules/competitions/infra/typeorm/repositories/CompetitionRepository';
+
 container.registerSingleton<ISponsorRepository>(
   'SponsorRepository',
   SponsorRepository,
@@ -56,4 +59,9 @@ container.registerSingleton<IEnrollmentsRepository>(
 container.registerSingleton<IShutdownRepository>(
   'ShutdownRepository',
   ShutdownRepository,
+);
+
+container.registerSingleton<ICompetitionRepository>(
+  'CompetitionRepository',
+  CompetitionRepository,
 );

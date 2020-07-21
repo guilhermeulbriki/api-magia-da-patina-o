@@ -12,9 +12,14 @@ import adminProfileRouter from '@modules/administrators/infra/http/routes/profil
 import adminSessionsRouter from '@modules/administrators/infra/http/routes/sessions.routes';
 
 import groupsRouter from '@modules/groups/infra/http/routes/groups.routes';
+
 import schedulesRouter from '@modules/schedules/infra/http/routes/schedules.routes';
+
 import enrollmentsRouter from '@modules/enrollments/infra/http/routes/enrollments.routes';
+
 import shutdownRouter from '@modules/shutdowns/infra/http/routes/shutdown.routes';
+
+import competitionsRouter from '@modules/competitions/infra/http/routes/competitions.routes';
 
 const routes = Router();
 
@@ -36,5 +41,7 @@ routes.use('/schedules', schedulesRouter);
 routes.use('/enrollments', enrollmentsRouter);
 
 routes.use('/shutdowns', shutdownRouter);
+
+routes.use('/competitions', competitionsRouter);
 
 export default routes;
