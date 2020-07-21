@@ -55,6 +55,12 @@ class SponsorRepository implements ISponsorRepository {
   public async findById(id: string): Promise<Sponsor | undefined> {
     return this.ormRepository.findOne(id);
   }
+
+  public async findByName(name: string): Promise<Sponsor | undefined> {
+    return this.ormRepository.findOne({
+      where: { name },
+    });
+  }
 }
 
 export default SponsorRepository;

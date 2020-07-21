@@ -63,6 +63,14 @@ class FakeSponsorsRepository implements ISponsorRepository {
 
     return findSponsorByEmail;
   }
+
+  public async findByName(name: string): Promise<Sponsors | undefined> {
+    const findSponsorByName = this.sponsors.find(
+      sponsor => sponsor.name === name,
+    );
+
+    return findSponsorByName;
+  }
 }
 
 export default FakeSponsorsRepository;

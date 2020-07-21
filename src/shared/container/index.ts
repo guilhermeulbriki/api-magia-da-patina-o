@@ -20,6 +20,9 @@ import SchedulesRepository from '@modules/schedules/infra/typeorm/repositories/S
 import IEnrollmentsRepository from '@modules/enrollments/repositories/IEnrollmentsRepository';
 import EnrollmentsRepository from '@modules/enrollments/infra/typeorm/repositories/EnrollmentsRepository';
 
+import IShutdownRepository from '@modules/shutdowns/repositories/IShutdownRepository';
+import ShutdownRepository from '@modules/shutdowns/infra/typeorm/repositories/ShutdownRepository';
+
 container.registerSingleton<ISponsorRepository>(
   'SponsorRepository',
   SponsorRepository,
@@ -48,4 +51,9 @@ container.registerSingleton<ISchedulesRepository>(
 container.registerSingleton<IEnrollmentsRepository>(
   'EnrollmentsRepository',
   EnrollmentsRepository,
+);
+
+container.registerSingleton<IShutdownRepository>(
+  'ShutdownRepository',
+  ShutdownRepository,
 );

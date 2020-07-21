@@ -7,6 +7,7 @@ export default interface ISponsorRepository {
   save(sponsor: Sponsor): Promise<Sponsor>;
   delete(id: string): Promise<void>;
   findByEmail(email: string): Promise<Sponsor | undefined>;
+  findByName(name: string): Promise<Sponsor | undefined>;
   findByCpf(cpf: string): Promise<Sponsor | undefined>;
   findByRg(rg: string): Promise<Sponsor | undefined>;
   findById(id: string): Promise<Sponsor | undefined>;

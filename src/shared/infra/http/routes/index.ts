@@ -14,6 +14,7 @@ import adminSessionsRouter from '@modules/administrators/infra/http/routes/sessi
 import groupsRouter from '@modules/groups/infra/http/routes/groups.routes';
 import schedulesRouter from '@modules/schedules/infra/http/routes/schedules.routes';
 import enrollmentsRouter from '@modules/enrollments/infra/http/routes/enrollments.routes';
+import shutdownRouter from '@modules/shutdowns/infra/http/routes/shutdown.routes';
 
 const routes = Router();
 
@@ -33,5 +34,7 @@ routes.use('/groups', groupsRouter);
 routes.use('/schedules', schedulesRouter);
 
 routes.use('/enrollments', enrollmentsRouter);
+
+routes.use('/shutdowns', shutdownRouter);
 
 export default routes;
