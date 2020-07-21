@@ -21,9 +21,13 @@ export default class CompetitionController {
   }
 
   public async list(request: Request, response: Response): Promise<Response> {
+    const { award } = request.query;
+
     const listCompetition = container.resolve(ListCompetitionsService);
 
-    const competition = await listCompetition.execute();
+    const competition = await listCompetition.execute({
+      award: String(award),
+    });
 
     return response.json(classToClass(competition));
   }

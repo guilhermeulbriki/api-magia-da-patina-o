@@ -28,6 +28,8 @@
       "no-param-reassign": "off",
       "prettier/prettier": "error",
       "no-useless-escape": "off",
+      "radix": "off",
+      "no-restricted-globals": "off",
       "class-methods-use-this": "off",
       "@typescript-eslint/camelcase": "off",
       "no-useless-constructor": "off",

@@ -6,6 +6,10 @@ import ICompetitionRepository from '@modules/competitions/repositories/ICompetit
 
 import Competition from '../infra/typeorm/entities/Competition';
 
+interface IRequestDTO {
+  award: string;
+}
+
 @injectable()
 class ListCompetitionsService {
   constructor(
@@ -13,8 +17,16 @@ class ListCompetitionsService {
     private competitionRepository: ICompetitionRepository,
   ) {}
 
-  public async execute(): Promise<Competition[]> {
-    return this.competitionRepository.list();
+  public async execute({ award }: IRequestDTO): Promise<Competition[]> {
+    let competitions = await this.competitionRepository.list();
+
+    if (award !== undefined && !isNaN(parseInt(award))) {
+      competitions = competitions.filter(
+        competition => competition.award === parseInt(award),
+      );
+    }
+
+    return competitions;
   }
 }
 
