@@ -23,6 +23,8 @@ import competitionsRouter from '@modules/competitions/infra/http/routes/competit
 
 import spectacleRouter from '@modules/spectacles/infra/http/routes/spectacle.routes';
 
+import directorRouter from '@modules/directors/infra/http/routes/director.routes';
+
 const routes = Router();
 
 routes.use('/students', studentsRouter);
@@ -47,5 +49,7 @@ routes.use('/shutdowns', shutdownRouter);
 routes.use('/competitions', competitionsRouter);
 
 routes.use('/spectacles', spectacleRouter);
+
+routes.use('/directors', directorRouter);
 
 export default routes;

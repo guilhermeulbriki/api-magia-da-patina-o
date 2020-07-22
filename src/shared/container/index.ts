@@ -29,6 +29,9 @@ import CompetitionRepository from '@modules/competitions/infra/typeorm/repositor
 import ISpectacleRepository from '@modules/spectacles/repositories/ISpectacleRepository';
 import SpectacleRepository from '@modules/spectacles/infra/typeorm/repositories/SpectacleRepository';
 
+import IDirectorsRepository from '@modules/directors/repositories/IDirectorsRepository';
+import DirectorRepository from '@modules/directors/infra/typeorm/repositories/DirectorRepository';
+
 container.registerSingleton<ISponsorRepository>(
   'SponsorRepository',
   SponsorRepository,
@@ -72,4 +75,9 @@ container.registerSingleton<ICompetitionRepository>(
 container.registerSingleton<ISpectacleRepository>(
   'SpectacleRepository',
   SpectacleRepository,
+);
+
+container.registerSingleton<IDirectorsRepository>(
+  'DirectorRepository',
+  DirectorRepository,
 );
