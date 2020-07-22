@@ -17,7 +17,7 @@ class StudentRepository implements IStudentRepository {
       relations: ['sponsor', 'group', 'enrollment'],
       order: { created_at: 'DESC' },
       skip,
-      take: 3,
+      take: 20,
     });
   }
 

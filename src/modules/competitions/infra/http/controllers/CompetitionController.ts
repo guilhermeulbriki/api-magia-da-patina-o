@@ -21,12 +21,13 @@ export default class CompetitionController {
   }
 
   public async list(request: Request, response: Response): Promise<Response> {
-    const { award } = request.query;
+    const { award, page } = request.query;
 
     const listCompetition = container.resolve(ListCompetitionsService);
 
     const competition = await listCompetition.execute({
       award: String(award),
+      skip: Number(page),
     });
 
     return response.json(classToClass(competition));

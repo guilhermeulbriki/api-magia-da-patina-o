@@ -33,6 +33,7 @@ describe('listCompetitions', () => {
 
     const competitions = await listCompetitions.execute({
       award: '',
+      skip: 1,
     });
 
     expect(competitions).toEqual([competition1, competition2]);
@@ -59,6 +60,7 @@ describe('listCompetitions', () => {
 
     const competitions = await listCompetitions.execute({
       award: '2',
+      skip: 1,
     });
 
     expect(competitions).toEqual([competition]);

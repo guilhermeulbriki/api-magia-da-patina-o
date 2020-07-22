@@ -21,9 +21,11 @@ export default class DirectorController {
   }
 
   public async list(request: Request, response: Response): Promise<Response> {
+    const { page } = request.query;
+
     const listDirector = container.resolve(ListDirectorsService);
 
-    const director = await listDirector.execute();
+    const director = await listDirector.execute(Number(page));
 
     return response.json(classToClass(director));
   }

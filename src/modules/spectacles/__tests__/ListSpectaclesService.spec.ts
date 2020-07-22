@@ -28,14 +28,17 @@ describe('listSpectacles', () => {
       theme: 'pascoa',
     });
 
-    const spectacles = await listSpectacle.execute('DESC');
+    const spectacles = await listSpectacle.execute({
+      order: 'DESC',
+      skip: 1,
+    });
 
     expect(spectacles).toEqual([spectacle1, spectacle2]);
   });
 
   it('should not be able to list all spectacles with invalid prop', async () => {
-    await expect(listSpectacle.execute('WRONG_PROP')).rejects.toBeInstanceOf(
-      AppError,
-    );
+    await expect(
+      listSpectacle.execute({ order: 'WROGN-PROP', skip: 1 }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

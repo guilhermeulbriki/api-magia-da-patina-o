@@ -7,6 +7,11 @@ import ISpectacleRepository from '@modules/spectacles/repositories/ISpectacleRep
 
 import Spectacle from '../infra/typeorm/entities/Spectacle';
 
+interface IRequestDTO {
+  order: string;
+  skip: number;
+}
+
 @injectable()
 class ListSpectaclesService {
   constructor(
@@ -14,13 +19,16 @@ class ListSpectaclesService {
     private spectacleRepository: ISpectacleRepository,
   ) {}
 
-  public async execute(order: string): Promise<Spectacle[]> {
+  public async execute({ order, skip }: IRequestDTO): Promise<Spectacle[]> {
+    const page = (skip - 1) * 3;
+
     if (order !== 'DESC' && order !== 'ASC') {
       throw new AppError('Formato invalido');
     }
 
     return this.spectacleRepository.list({
       order,
+      page,
     });
   }
 }

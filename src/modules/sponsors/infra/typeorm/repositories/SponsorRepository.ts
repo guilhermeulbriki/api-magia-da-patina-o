@@ -12,8 +12,11 @@ class SponsorRepository implements ISponsorRepository {
     this.ormRepository = getRepository(Sponsor);
   }
 
-  public async listAll(): Promise<Sponsor[]> {
-    return this.ormRepository.find();
+  public async listAll(skip: number): Promise<Sponsor[]> {
+    return this.ormRepository.find({
+      skip,
+      take: 20,
+    });
   }
 
   public async create(sponsorData: ICreateSponsorDTO): Promise<Sponsor> {

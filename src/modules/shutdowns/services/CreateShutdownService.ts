@@ -27,14 +27,6 @@ class CreateShutdownService {
     sponsor_name,
     reason,
   }: IRequestDTO): Promise<Shutdown> {
-    const checkShutdownExist = await this.shutdownRepository.findBySponsorName(
-      sponsor_name,
-    );
-
-    if (checkShutdownExist) {
-      throw new AppError('Este responsável já se desligou do clube');
-    }
-
     const sponsor = await this.sponsorRepository.findByName(sponsor_name);
 
     if (!sponsor) {

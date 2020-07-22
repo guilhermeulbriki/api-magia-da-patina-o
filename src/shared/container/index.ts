@@ -30,7 +30,7 @@ import ISpectacleRepository from '@modules/spectacles/repositories/ISpectacleRep
 import SpectacleRepository from '@modules/spectacles/infra/typeorm/repositories/SpectacleRepository';
 
 import IDirectorsRepository from '@modules/directors/repositories/IDirectorsRepository';
-import DirectorRepository from '@modules/directors/infra/typeorm/repositories/DirectorRepository';
+import DirectorsRepository from '@modules/directors/infra/typeorm/repositories/DirectorRepository';
 
 container.registerSingleton<ISponsorRepository>(
   'SponsorRepository',
@@ -78,6 +78,6 @@ container.registerSingleton<ISpectacleRepository>(
 );
 
 container.registerSingleton<IDirectorsRepository>(
-  'DirectorRepository',
-  DirectorRepository,
+  'DirectorsRepository',
+  DirectorsRepository,
 );

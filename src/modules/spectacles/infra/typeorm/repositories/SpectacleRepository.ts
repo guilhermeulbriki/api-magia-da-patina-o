@@ -13,9 +13,11 @@ class ScheduleRepository implements ISpectacleRepository {
     this.ormRepository = getRepository(Spectacle);
   }
 
-  public async list({ order }: IListOrderDTO): Promise<Spectacle[]> {
+  public async list({ order, page }: IListOrderDTO): Promise<Spectacle[]> {
     return this.ormRepository.find({
       order: { public: order },
+      skip: page,
+      take: 20,
     });
   }
 

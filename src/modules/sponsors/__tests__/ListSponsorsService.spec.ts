@@ -42,6 +42,7 @@ describe('ListSponsors', () => {
 
     const data = {
       name: '',
+      skip: 1,
     };
 
     const sponsors = await listSponsors.execute(data);
@@ -80,6 +81,7 @@ describe('ListSponsors', () => {
 
     const data = {
       name: 'ed',
+      skip: 1,
     };
 
     const students = await listSponsors.execute(data);

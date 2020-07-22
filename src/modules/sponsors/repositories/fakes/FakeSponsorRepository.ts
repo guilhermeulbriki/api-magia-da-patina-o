@@ -14,7 +14,7 @@ class FakeSponsorsRepository implements ISponsorRepository {
     return findSponsorById;
   }
 
-  public async listAll(): Promise<Sponsors[]> {
+  public async listAll(_: number): Promise<Sponsors[]> {
     return this.sponsors;
   }
 

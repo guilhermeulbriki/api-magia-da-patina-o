@@ -12,9 +12,11 @@ class DirectorRepository implements IDirectorsRepository {
     this.ormRepository = getRepository(Director);
   }
 
-  public async list(): Promise<Director[]> {
+  public async list(skip: number): Promise<Director[]> {
     return this.ormRepository.find({
       order: { created_at: 'DESC' },
+      skip,
+      take: 20,
     });
   }
 

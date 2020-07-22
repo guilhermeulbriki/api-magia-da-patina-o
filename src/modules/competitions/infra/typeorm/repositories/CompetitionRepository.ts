@@ -12,9 +12,11 @@ class ScheduleRepository implements ICompetitionRepository {
     this.ormRepository = getRepository(Competition);
   }
 
-  public async list(): Promise<Competition[]> {
+  public async list(skip: number): Promise<Competition[]> {
     return this.ormRepository.find({
       order: { created_at: 'DESC' },
+      skip,
+      take: 20,
     });
   }
 

@@ -14,8 +14,9 @@ class ListDirectorsService {
     private directorsRepository: IDirectorsRepository,
   ) {}
 
-  public async execute(): Promise<Director[]> {
-    return this.directorsRepository.list();
+  public async execute(skip: number): Promise<Director[]> {
+    const page = (skip - 1) * 3;
+    return this.directorsRepository.list(page);
   }
 }
 

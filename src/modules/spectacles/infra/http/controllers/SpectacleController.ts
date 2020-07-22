@@ -21,11 +21,14 @@ export default class SchedulesController {
   }
 
   public async list(request: Request, response: Response): Promise<Response> {
-    const { order } = request.query;
+    const { order, page } = request.query;
 
     const listSpectacle = container.resolve(ListSpectaclesService);
 
-    const spectacle = await listSpectacle.execute(String(order));
+    const spectacle = await listSpectacle.execute({
+      order: String(order),
+      skip: Number(page),
+    });
 
     return response.json(classToClass(spectacle));
   }

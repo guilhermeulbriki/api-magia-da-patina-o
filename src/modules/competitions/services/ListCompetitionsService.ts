@@ -8,6 +8,7 @@ import Competition from '../infra/typeorm/entities/Competition';
 
 interface IRequestDTO {
   award: string;
+  skip: number;
 }
 
 @injectable()
@@ -17,8 +18,9 @@ class ListCompetitionsService {
     private competitionRepository: ICompetitionRepository,
   ) {}
 
-  public async execute({ award }: IRequestDTO): Promise<Competition[]> {
-    let competitions = await this.competitionRepository.list();
+  public async execute({ award, skip }: IRequestDTO): Promise<Competition[]> {
+    const page = (skip - 1) * 3;
+    let competitions = await this.competitionRepository.list(page);
 
     if (award !== undefined && !isNaN(parseInt(award))) {
       competitions = competitions.filter(

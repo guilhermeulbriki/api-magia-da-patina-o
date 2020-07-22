@@ -2,7 +2,7 @@ import Competition from '../infra/typeorm/entities/Competition';
 import ICreateCompetitionDTO from '../dtos/ICreateCompetitionDTO';
 
 export default interface ICompetitionRepository {
-  list(): Promise<Competition[]>;
+  list(page: number): Promise<Competition[]>;
   create(data: ICreateCompetitionDTO): Promise<Competition>;
   save(competition: Competition): Promise<Competition>;
   delete(id: string): Promise<void>;

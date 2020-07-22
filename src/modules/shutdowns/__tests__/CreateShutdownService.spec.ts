@@ -43,34 +43,6 @@ describe('CreateShutdown', () => {
     expect(shutdown).toHaveProperty('id');
   });
 
-  it('should not be able to create a new shutdown if the sponsor had been already shutdown', async () => {
-    const sponsor = await fakeSponsorRepository.create({
-      name: 'nome',
-      email: 'email@gmail.com',
-      password: '123',
-      cpf: '123',
-      rg: '123',
-      phone: '123',
-      whatsapp: '123',
-      born: new Date(2020),
-      type: 'mãe',
-      gender: 'masculino',
-      address: 'add',
-    });
-
-    await createShutdown.execute({
-      reason: 'mt mao',
-      sponsor_name: sponsor.name,
-    });
-
-    await expect(
-      createShutdown.execute({
-        reason: 'mt mao',
-        sponsor_name: sponsor.name,
-      }),
-    ).rejects.toBeInstanceOf(AppError);
-  });
-
   it('should not be able to create a new shutdown if does not exist', async () => {
     await expect(
       createShutdown.execute({

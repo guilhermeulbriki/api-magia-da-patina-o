@@ -2,7 +2,7 @@ import Sponsor from '../infra/typeorm/entities/Sponsors';
 import ICreateSponsorDTO from '../dtos/ICreateSponsorDTO';
 
 export default interface ISponsorRepository {
-  listAll(): Promise<Sponsor[]>;
+  listAll(skip: number): Promise<Sponsor[]>;
   create(data: ICreateSponsorDTO): Promise<Sponsor>;
   save(sponsor: Sponsor): Promise<Sponsor>;
   delete(id: string): Promise<void>;
