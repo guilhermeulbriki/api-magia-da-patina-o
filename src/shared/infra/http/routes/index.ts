@@ -21,6 +21,8 @@ import shutdownRouter from '@modules/shutdowns/infra/http/routes/shutdown.routes
 
 import competitionsRouter from '@modules/competitions/infra/http/routes/competitions.routes';
 
+import spectacleRouter from '@modules/spectacles/infra/http/routes/spectacle.routes';
+
 const routes = Router();
 
 routes.use('/students', studentsRouter);
@@ -43,5 +45,7 @@ routes.use('/enrollments', enrollmentsRouter);
 routes.use('/shutdowns', shutdownRouter);
 
 routes.use('/competitions', competitionsRouter);
+
+routes.use('/spectacles', spectacleRouter);
 
 export default routes;
