@@ -15,7 +15,7 @@ class GroupRepository implements IGroupsRepository {
 
   public async list(): Promise<Group[]> {
     return this.ormRepository.find({
-      relations: ['students'],
+      relations: ['students', 'schedules'],
     });
   }
 
