@@ -38,7 +38,7 @@ describe('DeleteSponsor', () => {
 
     await deleteSponsor.execute(sponsor.id);
 
-    const sponsors = await fakeSponsorsRepository.listAll();
+    const sponsors = await fakeSponsorsRepository.listAll(1);
 
     expect(sponsors).toEqual([]);
   });

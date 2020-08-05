@@ -27,7 +27,7 @@ describe('listDirector', () => {
       end: new Date(Date.now()),
     });
 
-    const directors = await listDirector.execute();
+    const directors = await listDirector.execute(1);
 
     expect(directors).toEqual([director1, director2]);
   });
