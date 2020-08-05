@@ -55,7 +55,7 @@ class UpdateAdminService {
     if (data.newPassword) {
       admin.password = await this.hashProvider.generateHash(data.newPassword);
     } else {
-      admin.password = data.password;
+      admin.password = await this.hashProvider.generateHash(data.password);
     }
 
     admin.name = data.name;
