@@ -35,10 +35,10 @@ To clone and run this application, from your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/lukemorales/react-native-design-code
+$ git clone https://github.com/guilhermeulbriki/api-magia-da-patinacao.git
 
 # Go into the repository
-$ cd designCode
+$ cd backend
 
 # Install dependencies
 $ yarn
