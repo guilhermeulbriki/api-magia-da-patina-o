@@ -22,12 +22,12 @@
 
 This project was developed with the following technologies:
 
--  [Expo](https://expo.io/)
--  [React-Native](https://facebook.github.io/react-native/)
--  [React Native Gesture Handler](https://kmagiera.github.io/react-native-gesture-handler/)
--  [React Navigation](https://reactnavigation.org/)
--  [styled-components](https://www.styled-components.com/)
--  [@expo/vector-icons](https://expo.github.io/vector-icons/)
+-  [Nodejs](https://nodejs.org/en/)
+-  [Express](https://expressjs.com/pt-br/)
+-  [Celebrate](https://github.com/arb/celebrate)
+-  [TypeORM](https://typeorm.io/#/)
+-  [Jsonwebtoken](https://jwt.io/)
+-  [Uuid](https://www.uuidgenerator.net/version4)
 
 ## :information_source: How To Use
 
