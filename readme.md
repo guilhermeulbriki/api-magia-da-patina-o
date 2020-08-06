@@ -43,8 +43,8 @@ $ cd backend
 # Install dependencies
 $ yarn
 
-# Start Expo
-$ yarn start
+# Start server
+$ yarn dev:server
 ```
 
 <h3>
