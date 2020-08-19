@@ -12,6 +12,7 @@ import adminProfileRouter from '@modules/administrators/infra/http/routes/profil
 import adminSessionsRouter from '@modules/administrators/infra/http/routes/sessions.routes';
 
 import groupsRouter from '@modules/groups/infra/http/routes/groups.routes';
+import listGroupsRouter from '@modules/groups/infra/http/routes/listGroups.routes';
 
 import schedulesRouter from '@modules/schedules/infra/http/routes/schedules.routes';
 
@@ -38,6 +39,7 @@ routes.use('/admins', adminsRouter);
 routes.use('/admins/profile', adminProfileRouter);
 routes.use('/sessions/admin', adminSessionsRouter);
 
+routes.use('/groups/list', listGroupsRouter);
 routes.use('/groups', groupsRouter);
 
 routes.use('/schedules', schedulesRouter);
