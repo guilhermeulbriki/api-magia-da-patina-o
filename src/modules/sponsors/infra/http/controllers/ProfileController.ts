@@ -21,6 +21,8 @@ export default class ProfileController {
   public async update(request: Request, response: Response): Promise<Response> {
     const sponsor_id = request.sponsor.id;
 
+    console.log(sponsor_id);
+
     const data = request.body;
 
     const sponsor = {

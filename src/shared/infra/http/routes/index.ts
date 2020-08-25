@@ -33,7 +33,7 @@ routes.use('/students/by-sponsor', studentsBySponsorRouter);
 
 routes.use('/sponsors', sponsorsRouter);
 routes.use('/sessions/sponsor', sponsorSessionsRouter);
-routes.use('/sponsors/profile', sponsorProfileRouter);
+routes.use('/sponsor/profile', sponsorProfileRouter);
 
 routes.use('/admins', adminsRouter);
 routes.use('/admins/profile', adminProfileRouter);

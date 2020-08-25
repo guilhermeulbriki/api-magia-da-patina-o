@@ -9,7 +9,7 @@ import getAgeByDate from '@shared/utils/getAgeByDate';
 import Sponsors from '../infra/typeorm/entities/Sponsors';
 
 interface IRequestDTO {
-  id: string;
+  sponsor_id: string;
   name: string;
   password: string;
   email: string;
@@ -38,7 +38,7 @@ class UpdateSponsorService {
   ) {}
 
   public async execute(data: IRequestDTO): Promise<Sponsors> {
-    const sponsor = await this.sponsorRepository.findById(data.id);
+    const sponsor = await this.sponsorRepository.findById(data.sponsor_id);
 
     if (!sponsor) {
       throw new AppError('Responsável não encontrado');
