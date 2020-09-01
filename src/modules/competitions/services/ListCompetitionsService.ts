@@ -19,7 +19,7 @@ class ListCompetitionsService {
   ) {}
 
   public async execute({ award, skip }: IRequestDTO): Promise<Competition[]> {
-    const page = (skip - 1) * 3;
+    const page = (skip - 1) * 20;
     let competitions = await this.competitionRepository.list(page);
 
     if (award !== undefined && !isNaN(parseInt(award))) {
