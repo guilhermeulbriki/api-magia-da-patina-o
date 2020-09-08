@@ -37,7 +37,7 @@ describe('UpdateProfile', () => {
     });
 
     const updatedSponsor = await updateProfile.execute({
-      id: sponsor.id,
+      sponsor_id: sponsor.id,
       name: 'nome alterado',
       email: 'email-alterado@gmail.com',
       password: '123',
@@ -65,7 +65,7 @@ describe('UpdateProfile', () => {
   it('should not be able to update a sponsor if does not exist', async () => {
     await expect(
       updateProfile.execute({
-        id: 'haufhaufaf',
+        sponsor_id: 'haufhaufaf',
         name: 'nome',
         email: 'email@gmail.com',
         password: '123',
@@ -119,7 +119,7 @@ describe('UpdateProfile', () => {
 
     await expect(
       updateProfile.execute({
-        id: sponsor1.id,
+        sponsor_id: sponsor1.id,
         name: 'nome',
         email: sponsor2.email,
         password: '123',
@@ -173,7 +173,7 @@ describe('UpdateProfile', () => {
 
     await expect(
       updateProfile.execute({
-        id: sponsor1.id,
+        sponsor_id: sponsor1.id,
         name: 'nome',
         email: sponsor1.email,
         password: '123',
@@ -227,7 +227,7 @@ describe('UpdateProfile', () => {
 
     await expect(
       updateProfile.execute({
-        id: sponsor1.id,
+        sponsor_id: sponsor1.id,
         name: 'nome',
         email: sponsor1.email,
         password: '123',
@@ -276,7 +276,7 @@ describe('UpdateProfile', () => {
 
     await expect(
       updateProfile.execute({
-        id: sponsor.id,
+        sponsor_id: sponsor.id,
         name: 'nome',
         email: 'email3@gmail.com',
         password: '123',
