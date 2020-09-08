@@ -3,6 +3,7 @@ import { container } from 'tsyringe';
 
 import FindByIdService from '@modules/students/services/FindByIdService';
 import ListStudentsService from '@modules/students/services/ListStudentsService';
+import ListStudentsAgesService from '@modules/students/services/ListStudentsAgesService';
 import CreateStudentService from '@modules/students/services/CreateStudentService';
 import UpdateProfileService from '@modules/students/services/UpdateProfileService';
 import AlterUserGroupService from '@modules/students/services/AlterUserGroupService';
@@ -33,6 +34,17 @@ export default class StudentsController {
       name: String(name),
       skip: Number(page),
     });
+
+    return response.json(classToClass(students));
+  }
+
+  public async listAge(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const listStudentsAge = container.resolve(ListStudentsAgesService);
+
+    const students = await listStudentsAge.execute();
 
     return response.json(classToClass(students));
   }

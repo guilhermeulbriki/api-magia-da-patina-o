@@ -3,6 +3,7 @@ import ICreateStudentDTO from '../dtos/ICreateStudentDTO';
 
 export default interface IStudentRepository {
   list(skip: number): Promise<Student[]>;
+  listAges(): Promise<Student[]>;
   create(data: ICreateStudentDTO): Promise<Student>;
   save(sponsor: Student): Promise<Student>;
   delete(id: string): Promise<void>;

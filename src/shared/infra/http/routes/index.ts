@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import studentsRouter from '@modules/students/infra/http/routes/students.routes';
 import studentsBySponsorRouter from '@modules/students/infra/http/routes/studentsBySponsor.routes';
+import studentsAge from '@modules/students/infra/http/routes/studentsAge.routes';
 
 import sponsorsRouter from '@modules/sponsors/infra/http/routes/sponsors.routes';
 import sponsorProfileRouter from '@modules/sponsors/infra/http/routes/profile.routes';
@@ -29,6 +30,7 @@ import directorRouter from '@modules/directors/infra/http/routes/director.routes
 const routes = Router();
 
 routes.use('/students', studentsRouter);
+routes.use('/studentsAges', studentsAge);
 routes.use('/students/by-sponsor', studentsBySponsorRouter);
 
 routes.use('/sponsors', sponsorsRouter);

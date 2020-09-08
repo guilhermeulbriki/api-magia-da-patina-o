@@ -21,6 +21,12 @@ class StudentRepository implements IStudentRepository {
     });
   }
 
+  public async listAges(): Promise<Student[]> {
+    return this.ormRepository.find({
+      select: ['age'],
+    });
+  }
+
   public async create(studentData: ICreateStudentDTO): Promise<Student> {
     const student = await this.ormRepository.create(studentData);
 
