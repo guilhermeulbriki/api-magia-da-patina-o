@@ -16,8 +16,6 @@ class ListStudentsAgesService {
   public async execute(): Promise<Student[]> {
     const students = await this.studentRepository.listAges();
 
-    console.log(students);
-
     return students;
   }
 }
