@@ -62,7 +62,11 @@ class Student {
   @JoinColumn({ name: 'group_id' })
   group: Group;
 
-  @OneToOne(() => Enrollment, enrollment => enrollment.student)
+  @Column()
+  enrollment_id: string;
+
+  @OneToOne(() => Enrollment)
+  @JoinColumn({ name: 'enrollment_id' })
   enrollment: Enrollment;
 }
 
