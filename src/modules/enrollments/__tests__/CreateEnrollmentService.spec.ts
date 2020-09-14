@@ -1,16 +1,21 @@
 import AppError from '@shared/errors/AppError';
 
+import FakeStudentRepository from '@modules/students/repositories/fakes/FakeStudentRepository';
 import CreateEnrollmentService from '../services/CreateEnrollmentService';
 import FakeEnrollmentsRepository from '../repositories/fakes/FakeEnrollmentsRepository';
 
 let fakeEnrollmentsRepository: FakeEnrollmentsRepository;
+let fakeStudentRepository: FakeStudentRepository;
 let createEnrollment: CreateEnrollmentService;
 
 describe('CreateEnrollments', () => {
   beforeEach(() => {
     fakeEnrollmentsRepository = new FakeEnrollmentsRepository();
 
-    createEnrollment = new CreateEnrollmentService(fakeEnrollmentsRepository);
+    createEnrollment = new CreateEnrollmentService(
+      fakeEnrollmentsRepository,
+      fakeStudentRepository,
+    );
   });
 
   it('should be able to register a new enrollment', async () => {

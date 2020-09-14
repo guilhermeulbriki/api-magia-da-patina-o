@@ -42,6 +42,7 @@ describe('ListStudents', () => {
     const dataFilter = {
       age: 0,
       name: '',
+      sponsor_name: '',
       group: '',
       skip: 0,
     };
@@ -81,6 +82,7 @@ describe('ListStudents', () => {
     const dataFilter = {
       age: 10,
       name: '',
+      sponsor_name: '',
       group: '',
       skip: 0,
     };
@@ -120,6 +122,7 @@ describe('ListStudents', () => {
     const dataFilter = {
       age: 0,
       name: 'ed',
+      sponsor_name: '',
       group: '',
       skip: 0,
     };
