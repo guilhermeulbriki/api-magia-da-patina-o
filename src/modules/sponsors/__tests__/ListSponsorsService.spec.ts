@@ -50,7 +50,7 @@ describe('ListSponsors', () => {
     expect(sponsors).toEqual([sponsor1, sponsor2]);
   });
 
-  it('should list only sponsor with name like "ed"', async () => {
+  it('should list only sponsor with name like "eduarda"', async () => {
     const sponsor1 = await fakeSponsorsRepository.create({
       name: 'eduarda',
       email: 'email@gmail.com',
@@ -80,7 +80,7 @@ describe('ListSponsors', () => {
     });
 
     const data = {
-      name: 'ed',
+      name: 'eduarda',
       skip: 1,
     };
 

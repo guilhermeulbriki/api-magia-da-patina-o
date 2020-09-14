@@ -29,7 +29,7 @@ class ListSponsorsService {
         sponsor =>
           formatValueToFilter(sponsor.name).indexOf(
             formatValueToFilter(data.name),
-          ) > 1,
+          ) > -1,
       );
     }
 
