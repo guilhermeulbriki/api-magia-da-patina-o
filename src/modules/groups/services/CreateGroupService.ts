@@ -38,12 +38,18 @@ class CreateGroupService {
       );
     }
 
-    return this.groupsRepository.create({
+    const group = await this.groupsRepository.create({
       name,
       city,
       color,
       instructor,
     });
+
+    const findedGroup = await this.groupsRepository.findById(group.id);
+
+    if (findedGroup) return findedGroup;
+
+    return group;
   }
 }
 

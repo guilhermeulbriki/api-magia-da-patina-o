@@ -44,17 +44,14 @@ export default class SchedulesController {
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    const { theme, date, local, publicAverage } = request.body;
+    const data = request.body;
     const { id } = request.params;
 
     const updateSpectacle = container.resolve(UpdateSpectacleService);
 
     const spectacle = await updateSpectacle.execute({
       id,
-      date,
-      local,
-      public: publicAverage,
-      theme,
+      ...data,
     });
 
     return response.json(classToClass(spectacle));
