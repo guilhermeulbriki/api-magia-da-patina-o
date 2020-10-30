@@ -5,6 +5,7 @@ import { injectable, inject } from 'tsyringe';
 
 import IGroupsRepository from '@modules/groups/repositories/IGroupsRepository';
 
+import formatValueToFilter from '@shared/utils/formatValueToFilter';
 import Group from '../infra/typeorm/entities/Groups';
 
 interface IRequestDTO {
@@ -27,15 +28,14 @@ class CreateGroupService {
     instructor,
     name,
   }: IRequestDTO): Promise<Group> {
-    const checkExistGroup = await this.groupsRepository.findByCityAndName({
-      city,
-      name,
-    });
+    const groups = await this.groupsRepository.list();
+
+    const checkExistGroup = groups.find(
+      group => formatValueToFilter(group.city) === formatValueToFilter(city),
+    );
 
     if (checkExistGroup) {
-      throw new AppError(
-        'Ops, já existe uma turma com este nome na sua cidade',
-      );
+      throw new AppError('Ops, já existe uma turma com este nome!');
     }
 
     const group = await this.groupsRepository.create({

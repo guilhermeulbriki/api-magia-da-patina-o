@@ -58,4 +58,10 @@ describe('CreateEnrollments', () => {
       createEnrollment.execute(enrollment.student_id),
     ).rejects.toBeInstanceOf(AppError);
   });
+
+  it('should not be able to register a enrollment if the student does not exists', async () => {
+    await expect(createEnrollment.execute('WRONG_ID')).rejects.toBeInstanceOf(
+      AppError,
+    );
+  });
 });
